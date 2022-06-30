@@ -1,0 +1,527 @@
+.profile {
+  color: $color-primary;
+
+  &_top {
+    margin-top: 56px;
+    box-shadow: 0 1px 2px $shadow-1;
+    background: $bg-primary;
+  }
+
+  &_bottom {
+    margin-top: 1px;
+    background: $bg-secondary;
+  }
+
+  &_container {
+    max-width: 945px;
+    margin: 0 auto;
+  }
+
+  &_cover {
+    position: relative;
+    height: 350px;
+    width: 100%;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    background: $bg-secondary;
+  }
+
+  &_img_wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+    margin-bottom: -2.8rem;
+  }
+
+  &_w {
+    &_left {
+      display: flex;
+      gap: 1rem;
+      padding: 1rem 13px 0 13px;
+    }
+
+    &_right {
+      display: flex;
+      gap: 8px;
+      padding: 0 18px;
+      margin-bottom: 7px;
+    }
+
+    &_img {
+      position: relative;
+      z-index: 9;
+    }
+
+    &_bg {
+      width: 180px;
+      height: 180px;
+      transform: translateY(-3.6rem);
+      border-radius: 50%;
+      background-repeat: no-repeat;
+      border: 2px solid #fff;
+      background: #fff;
+      cursor: pointer;
+
+      &:hover {
+        filter: brightness(95%);
+      }
+    }
+  }
+
+  &_circle {
+    position: absolute;
+    bottom: 4.5rem;
+    right: 0.5rem;
+    background: $bg-third;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+  }
+
+  &_name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 32px;
+  }
+
+  &_menu {
+    position: relative;
+    border-top: 1px solid $border-color;
+    display: flex;
+    padding: 0;
+
+    &_wrap {
+      position: relative;
+      padding: 0 2.2rem;
+    }
+
+    a {
+      height: 54px;
+      width: 78.5px;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      margin: 3px 0;
+      color: $color-secondary;
+    }
+
+    &_active {
+      height: 60px !important;
+      width: 65px !important;
+      margin: 0 !important;
+      color: $blue-color !important;
+      border-bottom: 3px solid$blue-color;
+      border-radius: 0 !important;
+    }
+  }
+
+  &_grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 10px;
+  }
+
+  &_card {
+    background: $bg-primary;
+    border-radius: 10px;
+    box-shadow: 0 1px 2px $shadow-1;
+    padding: 10px 15px;
+    margin-top: 15px;
+
+    &_header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-weight: 700;
+      font-size: 20px;
+    }
+
+    &_grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 10px;
+    }
+  }
+
+  &_photo_card {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+
+    img {
+      width: 100%;
+      height: 105px;
+      object-fit: cover;
+      border-radius: 10px;
+
+      &:hover {
+        filter: brightness(110%);
+      }
+    }
+
+    span {
+      color: $color-primary;
+      font-size: 14px;
+      font-weight: 600;
+      padding-left: 3px;
+    }
+  }
+
+  &_header_link {
+    font-weight: normal;
+    font-size: 16px;
+    color: $blue-color;
+    cursor: pointer;
+
+    &:hover {
+      background: $bg-secondary;
+    }
+  }
+
+  &_friend {
+    &_count {
+      font-weight: 600;
+    }
+
+    &_imgs {
+      display: flex;
+      align-items: center;
+      transform: translateY(9px);
+
+      img {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        box-shadow: 0 1px 2px $shadow-1;
+
+        &:hover {
+          filter: brightness(110%);
+        }
+      }
+    }
+  }
+}
+
+.open {
+  &_cover {
+    &_update {
+      background: #fff;
+      padding: 7px 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      font-size: 14px;
+      color: #111;
+      border-radius: 10px;
+      cursor: pointer;
+
+      i {
+        transform: scale(0.9);
+        margin-top: 4px;
+      }
+    }
+
+    &_menu {
+      background: $bg-primary;
+      position: absolute;
+      right: 0;
+      padding: 10px;
+      width: 300px;
+      border-radius: 10px;
+      box-shadow: 0 12px 28px 0 $shadow-1, 0 2px 4px 0 $shadow-2,
+        inset 0 0 0 px $shadow-inset;
+      z-index: 9;
+
+      &_item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 14px;
+        border-radius: 10px;
+      }
+    }
+  }
+}
+
+.pplumayknow {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  border: 3px solid $blue-color;
+  padding: 10px 15px;
+
+  &_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 600;
+    font-size: 16px;
+  }
+
+  &_list {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    height: 240px;
+
+    .light_blue_btn {
+      color: $blue-color;
+    }
+  }
+}
+
+.addfriend {
+  &_imgsmall {
+    width: 100%;
+    height: 140px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &_infos {
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  &_name {
+    font-size: 16px;
+    font-weight: 600;
+  }
+}
+
+.addfriendCard {
+  position: relative;
+  height: 100%;
+  width: 150px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: $bg-primary;
+}
+
+.invert {
+  filter: invert(100%);
+}
+
+.p10_dots {
+  background: $bg-third;
+  position: absolute;
+  right: 0;
+  top: 10px;
+  border-radius: 5px !important;
+  display: grid !important;
+  place-items: center;
+  padding: 8px 14px;
+
+  svg {
+    width: 16px;
+    height: 16px;
+    margin-top: 2px;
+    margin-left: 2px;
+  }
+}
+
+.bottom_container {
+  padding: 10px 2.2rem;
+}
+
+.light_blue_btn img {
+  width: 20px;
+}
+
+.left_header_grid {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.grid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  font-size: 14px;
+
+  .active {
+    color: $blue-color;
+  }
+}
+
+.othername {
+  color: $color-secondary;
+  font-size: 20px;
+}
+
+.view_type {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-weight: 600;
+  color: $color-secondary;
+}
+
+.no_posts {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 20px;
+  color: $color-secondary;
+}
+
+.scrollFixed .profile_left {
+  position: fixed;
+  width: 360px;
+}
+
+.scrollFixed .profile_right {
+  margin-left: 370px;
+  width: 504px;
+}
+
+.showLess .profile_left {
+  bottom: 10px;
+}
+
+.showMore .profile_left {
+  top: 52px;
+}
+
+.friendship {
+  z-index: 9;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  .blue_btn {
+    height: 34px;
+  }
+}
+
+@media (max-width: 900px) {
+  .profile {
+    &_img_wrap {
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    &_w {
+      &_left {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      &_col {
+        transform: translateY(-3.6rem);
+      }
+
+      &_right {
+        transform: translateY(-3.6rem);
+      }
+
+      &_circle {
+        right: 1rem;
+      }
+    }
+
+    &_name {
+      padding-bottom: 10px;
+      flex-direction: column;
+    }
+
+    &_grid {
+      grid-template-columns: 1fr;
+      .createPost {
+        width: 100% !important;
+      }
+    }
+
+    &_left {
+      .relative_fb_copyright {
+        display: none;
+      }
+    }
+
+    .friendship {
+      transform: translateY(-4rem);
+    }
+
+    &_friend {
+      &_count {
+        text-align: center;
+        transform: translateY(-17px);
+      }
+
+      &_imgs {
+        justify-content: center;
+        transform: translateY(-15px);
+      }
+    }
+  }
+
+  .pplumayknow {
+    display: none;
+  }
+
+  .bottom_container {
+    padding: 5px;
+  }
+
+  .othername {
+    transform: translateY(-10px);
+  }
+}
+
+@media (min-width: 900px) {
+  .friendship {
+    transform: translateX(-2rem);
+  }
+}
+
+@media (max-width: 650px) {
+  .profile {
+    &_menu_wrap {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .profile_grid {
+    .createPost,
+    .post {
+      margin-top: 1rem;
+    }
+  }
+
+  .friendship {
+    flex-direction: column;
+  }
+}

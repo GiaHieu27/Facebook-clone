@@ -1,0 +1,149 @@
+.register {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: $bg-primary;
+  box-shadow: 0 1px 2px $shadow-1;
+  border-radius: 10px;
+  padding: 15px;
+  padding-bottom: 1rem;
+  width: 350px;
+  height: fit-content;
+  color: $color-primary;
+
+  &_header {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid $bg-third;
+
+    i {
+      position: absolute;
+      right: 0;
+      cursor: pointer;
+    }
+
+    span {
+      &:first-of-type {
+        font-weight: 700;
+        font-size: 32px;
+      }
+
+      &:last-of-type {
+        font-size: 15px;
+        color: $color-secondary;
+      }
+    }
+  }
+
+  &_form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.reg {
+  &_line {
+    padding: 7px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    &_header {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      font-size: 13px;
+      color: $color-secondary;
+
+      i {
+        margin-top: 3px;
+      }
+    }
+  }
+
+  &_col {
+    position: relative;
+    align-self: flex-start;
+    margin-bottom: 10px;
+    padding: 0 10px;
+  }
+
+  &_grid {
+    margin-top: 5px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    height: 35px;
+    width: 100%;
+
+    select {
+      width: 90px;
+      font-size: 16px;
+      color: $color-primary;
+      background: $bg-primary;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    label {
+      width: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 16px;
+      color: $color-primary;
+      border-radius: 5px;
+      cursor: pointer;
+      border: 1px solid $color-secondary;
+      padding: 0 10px;
+    }
+  }
+
+  &_infos {
+    font-size: 11px;
+    margin-top: 10px;
+    color: $color-secondary;
+
+    span {
+      color: $blue-color;
+    }
+  }
+
+  &_btn_wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0 10px 0;
+  }
+}
+
+/*---------------------------Media Query-------------------------------------*/
+@media (min-width: 539px) {
+  .register {
+    width: 400px;
+  }
+
+  .reg {
+    &_line {
+      flex-direction: row;
+    }
+
+    &_grid select,
+    &_grid label {
+      width: 110px;
+    }
+
+    &_grid .input_error {
+      width: 350px !important;
+    }
+  }
+}
+
+/*---------------------------Media Query-------------------------------------*/

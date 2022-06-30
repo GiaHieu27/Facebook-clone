@@ -1,0 +1,230 @@
+.pictureBox {
+  width: 700px !important;
+  height: 500px;
+}
+
+.update {
+  &_picture {
+    &_wrap {
+      padding: 10px 15px;
+    }
+
+    &_buttons {
+      display: flex;
+      gap: 10px;
+
+      button {
+        width: 100%;
+      }
+
+      .light_blue_btn {
+        color: $blue-color;
+      }
+    }
+  }
+
+  &_img {
+    width: 700px !important;
+    height: 800px;
+
+    .reactEasyCrop_CropAreaGrid {
+      width: 300px !important;
+      height: 300px !important;
+      color: rgba(255, 255, 255, 0.5);
+    }
+  }
+
+  &_image_desc {
+    padding: 15px;
+  }
+
+  &_center {
+    position: relative;
+    width: 100%;
+    height: 355px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &_submit_wrap {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    button {
+      width: 110px !important;
+    }
+  }
+}
+
+.textarea_blue {
+  width: 100%;
+  height: 85px;
+  resize: none;
+  border-radius: 7px;
+  outline-offset: 5px;
+  border-color: $bg-third;
+  padding: 1.1rem;
+  font-size: 16px;
+  font-family: inherit;
+  background: $bg-primary;
+  color: $color-primary;
+
+  &:focus {
+    outline-color: $blue-color;
+  }
+
+  &:hover {
+    border-color: $color-secondary;
+  }
+}
+
+.cropper {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: 100%;
+    object-fit: contain;
+  }
+}
+
+.slider {
+  position: absolute;
+  bottom: -20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  &_circle {
+    cursor: pointer;
+    width: 36px;
+    height: 36px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+  }
+
+  input[type="range"] {
+    appearance: none;
+    outline: none;
+    width: 55%;
+    height: 4px;
+    background: #ced0d4;
+
+    &::-webkit-slider-thumb {
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      outline: none;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 2px 2px $shadow-1, 0 2px 2px 0 $shadow-2,
+        inset 0 0 0 1px $shadow-inset;
+      border: 1px solid $bg-third;
+    }
+  }
+}
+
+.flex_up {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 2rem;
+}
+
+.flex_p_t {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px;
+  color: $color-secondary;
+  font-size: 17px;
+  border-bottom: 1px solid $bg-third;
+}
+
+.blue_link {
+  color: $blue-color;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.old_pictures {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px 0;
+  gap: 10px;
+
+  img {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    cursor: pointer;
+    object-fit: cover;
+
+    &:hover {
+      filter: brightness(110%);
+    }
+  }
+
+  &:first-of-type {
+    border-bottom: 1px solid $bg-third;
+  }
+
+  &_wrap {
+    padding: 15px;
+    overflow-y: auto;
+    height: 365px;
+
+    h4 {
+      padding: 10px 0;
+    }
+  }
+}
+
+@media (max-width: 721px) {
+  .postBox.pictureBox {
+    width: 98% !important;
+  }
+}
+
+@media (max-width: 589px) {
+  .postBox .old_pictures {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    img {
+      width: 100%;
+      height: 110px;
+    }
+  }
+}
+
+@media (max-width: 430px) {
+  .postBox .old_pictures {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .box_header {
+    justify-content: space-between;
+    font-size: 18px;
+  }
+
+  .update_picture_buttons button {
+    font-size: 13px;
+  }
+}

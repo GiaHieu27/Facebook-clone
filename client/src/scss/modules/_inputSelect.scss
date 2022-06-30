@@ -1,0 +1,19 @@
+/*----------------DateOfBirth---------------*/
+.reg_grid {
+  .input_error {
+    width: 290px;
+    position: absolute;
+    top: 68px;
+
+    &_select_large {
+      left: -94.5%;
+      top: 13px;
+
+      &_right {
+        right: -94.5%;
+        top: 13px;
+      }
+    }
+  }
+}
+/*----------------DateOfBirth---------------*/

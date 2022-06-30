@@ -1,0 +1,83 @@
+.input {
+  &_wrap {
+    position: relative;
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    input {
+      outline: none;
+      border: 1px solid $bg-third;
+      background: $bg-primary;
+      width: 100%;
+      height: 50px;
+      font-size: 17px;
+      border-radius: 10px;
+      padding-left: 10px;
+      margin-bottom: 10px;
+      color: $color-primary;
+
+      &:focus {
+        border-color: green;
+      }
+    }
+
+    i {
+      position: absolute;
+      right: 5px;
+      top: 15px;
+      transform: scale(0.8);
+    }
+  }
+
+  &_error {
+    position: relative;
+    padding: 15px 10px;
+    background: #b94a48;
+    width: 100%;
+    color: #fff;
+    font-size: 13px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+
+    &_border {
+      border-color: #b94a48 !important;
+    }
+
+    &_desktop {
+      position: absolute;
+      width: 265px;
+      left: -17rem;
+      top: -4px;
+    }
+  }
+}
+
+.error_arrow {
+  &_top {
+    border-top: 10px solid #b94a48;
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+    position: absolute;
+    bottom: -10px;
+  }
+
+  &_bottom {
+    border-bottom: 10px solid #b94a48;
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+    position: absolute;
+    top: -10px;
+  }
+
+  &_left {
+    border-top: 10px solid transparent;
+    border-right: 10px solid #b94a48;
+    border-bottom: 10px solid transparent;
+    position: absolute;
+    right: -8px;
+    top: 13px;
+    transform: rotateY(534deg);
+  }
+}

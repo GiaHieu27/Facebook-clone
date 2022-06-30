@@ -1,0 +1,42 @@
+.register {
+  &_input {
+    &_wrap {
+      width: 100%;
+
+      input {
+        width: 300px;
+        background: $bg-secondary;
+      }
+
+      .input_error {
+        max-width: 300px;
+      }
+
+      .error_arrow_bottom {
+        transform: translateY(1px);
+      }
+    }
+  }
+}
+
+.error_arrow_right {
+  border-top: 10px solid transparent;
+  border-right: 10px solid #b94a48;
+  border-bottom: 10px solid transparent;
+  position: absolute;
+  bottom: 16px;
+  left: -10px;
+  top: 14px;
+}
+
+@media (min-width: 539px) {
+  .register {
+    &_input {
+      &_wrap {
+        .input_error {
+          max-width: 100%;
+        }
+      }
+    }
+  }
+}

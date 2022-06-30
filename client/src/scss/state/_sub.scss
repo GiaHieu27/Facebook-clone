@@ -1,0 +1,52 @@
+.blur {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.768);
+  z-index: 99;
+}
+
+.hover1:hover {
+  background: $bg-secondary;
+}
+.hover2:hover {
+  background: $bg-third;
+}
+.hover3:hover {
+  background: #d4d6da3a;
+}
+
+.card {
+  height: 500px;
+  width: 500px;
+  background: red;
+}
+
+.scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+.scrollbar::-webkit-scrollbar-thumb {
+  background: #33cc33;
+  border-radius: 10px;
+}
+
+.small_circle {
+  position: relative;
+  height: 36px;
+  width: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 11px;
+  background: $bg-third;
+  cursor: pointer;
+}
+
+.filter_blue {
+  filter: invert(39%) sepia(57%) saturate(200%) saturate(200%) saturate(200%)
+    saturate(200%) saturate(200%) saturate(147.75%) hue-rotate(202deg)
+    brightness(97%) contrast(96%);
+}

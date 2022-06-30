@@ -1,0 +1,60 @@
+.createPost {
+  background: $bg-primary;
+  border-radius: 10px;
+  box-shadow: 0 1px 2px $shadow-1;
+  margin-top: 1.1rem;
+  width: 100%;
+  cursor: pointer;
+
+  &_header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 17px 5px 15px;
+
+    & img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+  }
+
+  &_body {
+    padding: 0 10px 8px 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  &_icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-weight: 600;
+    padding: 7px;
+    color: $color-secondary;
+    border-radius: 10px;
+    font-size: 14px;
+  }
+}
+
+.open_post {
+  background: $bg-forth;
+  color: $color-secondary;
+  height: 41px;
+  flex: 1;
+  border-radius: 50px;
+  font-size: 17px;
+  line-height: 21px;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+}
+
+.create_splitter {
+  height: 1px;
+  width: 95%;
+  background: $bg-third;
+  margin: 7px 10px;
+}
