@@ -1,12 +1,12 @@
 const mongoose = require("mongoose");
 
-function connect(url) {
+function connectDb(urlDb) {
   try {
-    mongoose.connect(process.env.DATABASE_URL);
+    mongoose.connect(urlDb);
     console.log("database connect success");
   } catch (error) {
     console.log("database connect error: " + error);
   }
 }
 
-module.exports = connect;
+module.exports = connectDb;

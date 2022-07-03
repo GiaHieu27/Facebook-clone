@@ -22,7 +22,6 @@ exports.getAllPosts = async (req, res) => {
 
 exports.comment = async (req, res) => {
   try {
-    console.log(req.body);
     const { comment, postId, image } = req.body;
     let newComments = await Post.findByIdAndUpdate(
       postId,
@@ -32,6 +31,7 @@ exports.comment = async (req, res) => {
             comment,
             images: image,
             commentBy: req.user.id,
+            commentAt: new Date(),
           },
         },
       },

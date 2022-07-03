@@ -21,7 +21,7 @@ readdirSync("./routes").map((route) =>
   app.use("/", require("./routes/" + route))
 );
 
-connectDb(process.env.DATABASE);
+connectDb(process.env.DATABASE_URL);
 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {

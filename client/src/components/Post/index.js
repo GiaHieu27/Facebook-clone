@@ -7,22 +7,28 @@ import ReactsPopup from "./ReactsPopup";
 import CreateComments from "./CreateComments";
 import PostMenu from "./PostMenu";
 import { getReacts, reactPost } from "../../functions/post";
+import Comment from "./Comment";
 
 function Post({ post, user, profile }) {
   const [visible, setVisible] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
-  const [reacts, setReacts] = useState();
-  const [check, setCheck] = useState();
+  const [reacts, setReacts] = useState([]);
+  const [check, setCheck] = useState("");
   const [total, setTotal] = useState(0);
-  const [comments, setComments] = useState(post?.comments);
+  const [comments, setComments] = useState([]);
+  const [count, setCount] = useState(1);
 
   useEffect(() => {
     getReactPosts();
   }, [post]);
+
   useEffect(() => {
     setComments(post?.comments);
   }, [post]);
-  console.log(comments);
+
+  const showMore = () => {
+    setCount((prev) => prev + 3);
+  };
 
   const getReactPosts = async () => {
     const res = await getReacts(post._id, user.token);
@@ -35,7 +41,6 @@ function Post({ post, user, profile }) {
     reactPost(post._id, reactName, user.token);
     if (check === reactName) {
       setCheck();
-      console.log(reacts);
       let index = reacts.findIndex((x) => x.react === check);
       if (index !== -1) {
         setReacts([...reacts, (reacts[index].count = --reacts[index].count)]);
@@ -45,15 +50,14 @@ function Post({ post, user, profile }) {
       setCheck(reactName);
       let index = reacts.findIndex((x) => x.react === reactName);
       let index1 = reacts.findIndex((x) => x.react === check);
+
       if (index !== -1) {
         setReacts([...reacts, (reacts[index].count = ++reacts[index].count)]);
         setTotal((prev) => ++prev);
-        console.log(reacts);
       }
       if (index1 !== -1) {
-        setReacts([...reacts, (reacts[index].count = --reacts[index].count)]);
+        setReacts([...reacts, (reacts[index1].count = --reacts[index1].count)]);
         setTotal((prev) => --prev);
-        console.log(reacts);
       }
     }
   };
@@ -140,7 +144,12 @@ function Post({ post, user, profile }) {
               }
             >
               {post.images.slice(0, 5).map((image, i) => (
-                <img src={image.url} alt="" key={i} className={`img-${i}`} />
+                <img
+                  src={image.url}
+                  alt="post_img"
+                  key={i}
+                  className={`img-${i}`}
+                />
               ))}
               {post.images.length > 5 && (
                 <div className="more-pics-shadow">
@@ -169,6 +178,7 @@ function Post({ post, user, profile }) {
           <img src={post.images[0].url} alt="" />
         </div>
       )}
+
       <div className="post_infos">
         <div className="reacts_count">
           <div className="reacts_count_imgs">
@@ -190,10 +200,13 @@ function Post({ post, user, profile }) {
           <div className="reacts_count_num">{total ? total : ""}</div>
         </div>
         <div className="to_right">
-          <div className="comments_count">100 comments</div>
-          <div className="share_count">100 share</div>
+          <div className="comments_count">
+            {comments.length > 0 ? `${comments.length} comments` : ""}
+          </div>
+          {/* <div className="share_count">100 share</div> */}
         </div>
       </div>
+
       <div className="post_actions">
         <ReactsPopup
           visible={visible}
@@ -255,9 +268,25 @@ function Post({ post, user, profile }) {
           <span>Share</span>
         </div>
       </div>
+
       <div className="comments_wrap">
         <div className="comments_order"></div>
-        <CreateComments user={user} postId={post._id} />
+        <CreateComments
+          user={user}
+          postId={post._id}
+          setComments={setComments}
+          setCount={setCount}
+        />
+        {comments &&
+          [...comments]
+            .sort((a, b) => new Date(b.commentAt) - new Date(a.commentAt))
+            .slice(0, count)
+            .map((comment, i) => <Comment comment={comment} key={i} />)}
+        {count < comments.length && (
+          <div className="view_comments" onClick={() => showMore()}>
+            View more commens
+          </div>
+        )}
       </div>
     </div>
   );

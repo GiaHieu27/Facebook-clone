@@ -6,7 +6,7 @@ import { comment } from "../../functions/post";
 import uploadImages from "../../functions/uploadImages";
 import dataURLtoBlob from "../../helpers/dataURLtoBlob";
 
-function CreateComments({ user, postId }) {
+function CreateComments({ user, postId, setComments, setCount }) {
   const [picker, setPicker] = useState(false);
   const [cursorPosition, setCursorPosition] = useState();
   const [text, setText] = useState("");
@@ -33,7 +33,6 @@ function CreateComments({ user, postId }) {
 
   const handleChangeImage = (e) => {
     let file = e.target.files[0];
-    // console.log(file);
     if (
       file.type !== "image/png" &&
       file.type !== "image/jpg" &&
@@ -59,9 +58,7 @@ function CreateComments({ user, postId }) {
     if (e.key === "Enter") {
       if (commentImage !== "") {
         setLoading(true);
-
         const img = dataURLtoBlob(commentImage);
-        // console.log(img);
         const path = `${user.username}/post_images/${postId}`;
 
         let formData = new FormData();
@@ -75,14 +72,17 @@ function CreateComments({ user, postId }) {
           imgComment[0].url,
           user.token
         );
-        console.log(comments);
 
+        setComments(comments);
+        setCount((prev) => ++prev);
         setLoading(false);
         setText("");
         setCommentImage("");
       } else {
         setLoading(true);
         const comments = await comment(postId, text, "", user.token);
+        setComments(comments);
+        setCount((prev) => ++prev);
         setLoading(false);
         setText("");
         setCommentImage("");
@@ -103,9 +103,9 @@ function CreateComments({ user, postId }) {
           <input
             type="file"
             ref={imgRef}
-            hidden
             accept="image/png,image/jpeg,image/jpeg,image/gif,image/webp"
             onChange={handleChangeImage}
+            hidden
           />
           {error && (
             <div className="postError comment_error">
@@ -122,6 +122,7 @@ function CreateComments({ user, postId }) {
             placeholder="Viet binh luan"
             onChange={(e) => setText(e.target.value)}
             onKeyUp={handleComment}
+            onClick={() => setPicker(false)}
           />
           <div className="comment_circle">
             <ClipLoader color="green" size="7px" loading={loading} />

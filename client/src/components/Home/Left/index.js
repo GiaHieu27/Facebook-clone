@@ -4,7 +4,6 @@ import LeftLink from "./LeftLink";
 import { left } from "../../../data/home";
 import { ArrowDown1 } from "../../../svg";
 import { useState } from "react";
-import Shortcut from "./Shortcut";
 
 function LeftHome({ user }) {
   const [visible, setVisible] = useState(false);
@@ -58,24 +57,11 @@ function LeftHome({ user }) {
       )}
 
       <div className="splitter"></div>
-      <div className="shortcut">
+      {/* <div className="shortcut">
         <div className="heading">Your Shortcuts</div>
         <div className="edit_shortcut">Edit</div>
-      </div>
+      </div> */}
 
-      <div className="shortcut_list">
-        <Shortcut
-          link="https://www.youtube.com/c/MohamedHaJJi1/featured"
-          img="../../images/ytb.png"
-          name="My Youtube channel"
-        />
-
-        <Shortcut
-          link="https://www.instagram.com/med_hajji7/"
-          img="../../images/insta.png"
-          name="My Instagram "
-        />
-      </div>
       <div className={`fb_copyright ${visible && "relative_fb_copyright"}`}>
         <Link to="/">Privacy </Link>
         <span>. </span>

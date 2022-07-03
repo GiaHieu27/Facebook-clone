@@ -46,6 +46,8 @@ exports.getReacts = async (req, res) => {
       return group;
     }, {});
 
+    // console.log(newReact);
+
     const reacts = [
       { react: "like", count: newReact.like ? newReact.like.length : 0 },
       { react: "love", count: newReact.love ? newReact.love.length : 0 },
