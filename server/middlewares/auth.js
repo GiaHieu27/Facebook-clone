@@ -9,11 +9,11 @@ exports.authUser = async (req, res, next) => {
     const token = tmp ? tmp.slice(7, tmp.length) : "";
     // console.log(token);
     if (!token) {
-      return res.status(400).json({ message: "Khong the uy quyen" });
+      return res.status(400).json({ message: "Khong the uy quyen 1" });
     }
     jwt.verify(token, process.env.TOKEN_SECRET, (err, user) => {
       if (err) {
-        return res.status(400).json({ message: "Khong the uy quyen" });
+        return res.status(400).json({ message: "Khong the uy quyen 2" });
       }
       // console.log(user);
       req.user = user;

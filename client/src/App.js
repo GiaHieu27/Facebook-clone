@@ -38,7 +38,7 @@ function App() {
         `${process.env.REACT_APP_BACKEND_URL}/getAllPosts`,
         {
           headers: {
-            Authorization: "Bearer" + user.token,
+            Authorization: "Bearer " + user.token,
           },
         }
       );
@@ -72,7 +72,9 @@ function App() {
 
           <Route
             path="/"
-            element={<Home setVisible={setVisible} posts={posts} />}
+            element={
+              <Home setVisible={setVisible} posts={posts} loading={loading} />
+            }
           />
           <Route path="/activate/:tokenUrl" element={<Activate />} />
         </Route>

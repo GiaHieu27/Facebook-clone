@@ -9,7 +9,7 @@ import CreatePost from "../../components/CreatePost";
 import SenVerification from "../../components/Home/sendVerification";
 import Post from "../../components/Post";
 
-function Home({ setVisible, posts }) {
+function Home({ setVisible, posts, loading }) {
   const { user } = useSelector((user) => ({ ...user }));
   const [height, setHeight] = useState();
   const middle = useRef(null);
