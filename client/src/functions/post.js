@@ -9,7 +9,7 @@ export const createPost = async (
   token
 ) => {
   try {
-    await axios.post(
+    const { data } = await axios.post(
       `${process.env.REACT_APP_BACKEND_URL}/createPost`,
       { type, background, text, images, user },
       {
@@ -18,7 +18,7 @@ export const createPost = async (
         },
       }
     );
-    return "ok";
+    return { status: "ok", data };
   } catch (error) {
     return error.response.data.message;
   }

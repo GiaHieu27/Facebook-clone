@@ -9,18 +9,18 @@ import CreatePost from "../../components/CreatePost";
 import SenVerification from "../../components/Home/sendVerification";
 import Post from "../../components/Post";
 
-function Home({ setVisible, posts, loading }) {
+function Home({ setVisible, posts, loading, getPosts }) {
   const { user } = useSelector((user) => ({ ...user }));
   const [height, setHeight] = useState();
   const middle = useRef(null);
 
   useEffect(() => {
     setHeight(middle.current.clientHeight);
-  }, []);
+  }, [loading, height]);
 
   return (
     <div className="home" style={{ height: `${height + 150}px` }}>
-      <Header page="home" />
+      <Header page="home" getPosts={getPosts} />
       <LeftHome user={user} />
       <div className="home_middle" ref={middle}>
         <Stories />

@@ -26,10 +26,10 @@ function App() {
   });
 
   useEffect(() => {
-    getAllPosts();
+    getPosts();
   }, []);
 
-  const getAllPosts = async () => {
+  const getPosts = async () => {
     try {
       dispatch({
         type: "POST_REQUEST",
@@ -58,22 +58,28 @@ function App() {
 
   return (
     <>
-      {visible && <CreratePostPopup user={user} setVisible={setVisible} />}
+      {visible && (
+        <CreratePostPopup
+          user={user}
+          setVisible={setVisible}
+          dispatch={dispatch}
+          posts={posts}
+        />
+      )}
       <Routes>
         <Route element={<LoggedInRoutes />}>
-          <Route
-            path="/profile/"
-            element={<Profile setVisible={setVisible} />}
-          />
-          <Route
-            path="/profile/:username"
-            element={<Profile setVisible={setVisible} />}
-          />
+          <Route path="/profile/" element={<Profile />} getPosts={getPosts} />
+          <Route path="/profile/:username" element={<Profile />} />
 
           <Route
             path="/"
             element={
-              <Home setVisible={setVisible} posts={posts} loading={loading} />
+              <Home
+                setVisible={setVisible}
+                posts={posts}
+                loading={loading}
+                getPosts={getPosts}
+              />
             }
           />
           <Route path="/activate/:tokenUrl" element={<Activate />} />

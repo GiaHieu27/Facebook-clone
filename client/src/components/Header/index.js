@@ -21,7 +21,7 @@ import AllMenu from "./AllMenu";
 import useClickOutSide from "../../hooks/useClickOutSide";
 import UserMenu from "./UserMenu";
 
-function Header({ page }) {
+function Header({ page, getPosts }) {
   const { user } = useSelector((user) => ({ ...user }));
   const color = "#65676b";
 
@@ -69,6 +69,7 @@ function Header({ page }) {
         <Link
           to="/"
           className={`middle_icon ${page === "home" ? "active" : "hover1"}`}
+          onClick={() => getPosts()}
         >
           {page === "home" ? <HomeActive /> : <Home color={color} />}
         </Link>

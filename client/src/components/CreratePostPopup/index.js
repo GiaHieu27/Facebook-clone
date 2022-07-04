@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import PulseLoader from "react-spinners/PulseLoader";
 
 import EmojiPickerBackground from "./EmojiPickerBackground";
@@ -8,11 +8,12 @@ import AddYourPost from "./AddYourPost";
 import useClickOutSide from "../../hooks/useClickOutSide";
 import PostError from "./PostError";
 import dataURLtoBlob from "../../helpers/dataURLtoBlob";
-import { createPost } from "../../functions/post";
 import uploadImages from "../../functions/uploadImages";
+import profileReducer from "../../redux/reducers/profileReducer";
+import { createPost } from "../../functions/post";
 
-function CreratePostPopup({ user, setVisible }) {
-  const navigate = useNavigate();
+function CreratePostPopup({ user, setVisible, posts, dispatch, profile }) {
+  const dispatchh = useDispatch();
 
   const [text, setText] = useState("");
   const [showPrev, setShowPrev] = useState(false);
@@ -39,11 +40,18 @@ function CreratePostPopup({ user, setVisible }) {
       );
       setLoading(false);
 
-      if (res === "ok") {
+      if (res.status === "ok") {
+        if (profile) {
+          dispatchh(profileReducer.actions.PROFILE_POSTS([res.data, ...posts]));
+        } else {
+          dispatch({
+            type: "POST_SUCCESS",
+            payload: [res.data, ...posts],
+          });
+        }
         setBackground("");
         setText("");
         setVisible(false);
-        navigate(0);
       } else {
         setError(res);
       }
@@ -63,8 +71,6 @@ function CreratePostPopup({ user, setVisible }) {
       });
 
       const response = await uploadImages(formData, user.token);
-      console.log(response);
-
       const res = await createPost(
         null,
         null,
@@ -74,11 +80,18 @@ function CreratePostPopup({ user, setVisible }) {
         user.token
       );
       setLoading(false);
-      if (res === "ok") {
+      if (res.status === "ok") {
+        if (profile) {
+          dispatchh(profileReducer.actions.PROFILE_POSTS([res.data, ...posts]));
+        } else {
+          dispatch({
+            type: "POST_SUCCESS",
+            payload: [res.data, ...posts],
+          });
+        }
         setText("");
         setImages([]);
         setVisible(false);
-        navigate(0);
       } else {
         setError(res);
       }
@@ -87,11 +100,18 @@ function CreratePostPopup({ user, setVisible }) {
       const res = await createPost(null, null, text, null, user.id, user.token);
       setLoading(false);
 
-      if (res === "ok") {
+      if (res.status === "ok") {
+        if (profile) {
+          dispatchh(profileReducer.actions.PROFILE_POSTS([res.data, ...posts]));
+        } else {
+          dispatch({
+            type: "POST_SUCCESS",
+            payload: [res.data, ...posts],
+          });
+        }
         setBackground("");
         setText("");
         setVisible(false);
-        navigate(0);
       } else {
         setError(res);
       }

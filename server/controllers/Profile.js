@@ -9,8 +9,7 @@ exports.getProfile = async (req, res) => {
     const posts = await Post.find({ user: profile._id })
       .populate("user", "-password")
       .populate("comments.commentBy", "first_name last_name picture username")
-      .sort({ createdAt: -1 })
-      .lean();
+      .sort({ createdAt: -1 });
 
     const friendship = {
       friends: false,

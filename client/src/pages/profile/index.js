@@ -19,8 +19,9 @@ import Photos from "./Photos";
 import Friends from "./Friends";
 import Intro from "../../components/Intro";
 import { ProfileContext } from "../../profileContext/Context";
+import CreratePostPopup from "../../components/CreratePostPopup";
 
-function Profile({ setVisible }) {
+function Profile({ getPosts }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { profile, user, loading } = useContext(ProfileContext);
@@ -30,6 +31,7 @@ function Profile({ setVisible }) {
   let visitor = userParam === user.username ? false : true;
 
   const [photos, setPhotos] = useState([]);
+  const [visible, setVisible] = useState(false);
 
   const path = `${userParam}/*`;
   const max = 30;
@@ -105,7 +107,18 @@ function Profile({ setVisible }) {
 
   return (
     <div className="profile">
-      <Header page="profile" />
+      <Header page="profile" getPosts={getPosts} />
+
+      {visible && (
+        <CreratePostPopup
+          user={user}
+          setVisible={setVisible}
+          dispatch={dispatch}
+          posts={profile.posts}
+          profile
+        />
+      )}
+
       <div className="profile_top" ref={profileTopRef}>
         <div className="profile_container">
           <Cover
@@ -162,13 +175,10 @@ function Profile({ setVisible }) {
                   Meta © 2022
                 </div>
               </div>
+
               <div className="profile_right">
                 {!visitor && (
-                  <CreatePost
-                    user={user}
-                    profile={profile}
-                    setVisible={setVisible}
-                  />
+                  <CreatePost user={user} profile setVisible={setVisible} />
                 )}
                 <GridPost />
                 <div className="posts">

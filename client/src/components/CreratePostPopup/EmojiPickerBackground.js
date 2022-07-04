@@ -66,6 +66,7 @@ function EmojiPickerBackground({
           value={text}
           placeholder={`Ban dang nghi gi the ${user.last_name}`}
           onChange={(e) => setText(e.target.value)}
+          onClick={() => setPicker(false)}
           className={`post_input ${!type2 ? "" : "input2"} ${
             sm && !background && "ww"
           }`}
