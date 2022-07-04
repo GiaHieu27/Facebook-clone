@@ -2,12 +2,11 @@ const jwt = require("jsonwebtoken");
 
 exports.authUser = async (req, res, next) => {
   try {
-    // console.log(req);
+    
     let tmp = req.header("Authorization");
-    // console.log(tmp);
 
     const token = tmp ? tmp.slice(7, tmp.length) : "";
-    // console.log(token);
+    
     if (!token) {
       return res.status(400).json({ message: "Khong the uy quyen 1" });
     }
@@ -15,7 +14,6 @@ exports.authUser = async (req, res, next) => {
       if (err) {
         return res.status(400).json({ message: "Khong the uy quyen 2" });
       }
-      // console.log(user);
       req.user = user;
       next();
     });
