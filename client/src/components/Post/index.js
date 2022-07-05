@@ -121,6 +121,7 @@ function Post({ post, user, profile }) {
           setShowMenu={setShowMenu}
           checkSavedPost={checkSavedPost}
           setCheckSavedPost={setCheckSavedPost}
+          images={post.images}
         />
       )}
 
