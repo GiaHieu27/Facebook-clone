@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import { saveAs } from "file-saver";
 import MenuItem from "./MenuItem";
 import useClickOutside from "../../hooks/useClickOutSide";
-import { savePost } from "../../functions/post";
+import { deletePost, savePost } from "../../functions/post";
 
 function PostMenu({
   user,
@@ -13,6 +13,7 @@ function PostMenu({
   checkSavedPost,
   setCheckSavedPost,
   images,
+  postRef,
 }) {
   const [compare] = useState(user.id === postUserId ? true : false);
 
@@ -29,6 +30,14 @@ function PostMenu({
 
   const handleDownloadImg = async () => {
     images.map((image) => saveAs(image.url, "image.jpg"));
+  };
+
+  const handleDelPost = async () => {
+    const res = await deletePost(postId, user.token);
+    if (res.status === "ok") {
+      postRef.current.remove();
+      // postRef.current.style.display = "none";
+    }
   };
 
   return (
@@ -83,11 +92,13 @@ function PostMenu({
       )}
       {compare && <MenuItem icon="archive_icon" title="Move to archive" />}
       {compare && (
-        <MenuItem
-          icon="trash_icon"
-          title="Move to trash"
-          subtitle="items in your trash are deleted after 30 days"
-        />
+        <div onClick={() => handleDelPost()}>
+          <MenuItem
+            icon="trash_icon"
+            title="Move to trash"
+            subtitle="items in your trash are deleted after 30 days"
+          />
+        </div>
       )}
       {!compare && <div className="line"></div>}
       {!compare && (

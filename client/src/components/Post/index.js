@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import Moment from "react-moment";
 
@@ -18,6 +18,8 @@ function Post({ post, user, profile }) {
   const [comments, setComments] = useState([]);
   const [count, setCount] = useState(1);
   const [checkSavedPost, setCheckSavedPost] = useState();
+
+  const postRef = useRef(null);
 
   useEffect(() => {
     getReactPosts();
@@ -65,7 +67,11 @@ function Post({ post, user, profile }) {
   };
 
   return (
-    <div className="post" style={{ width: `${profile && "100%"}` }}>
+    <div
+      className="post"
+      style={{ width: `${profile && "100%"}` }}
+      ref={postRef}
+    >
       <div className="post_header">
         <Link
           to={`/profile/${post.user.username}`}
@@ -122,6 +128,7 @@ function Post({ post, user, profile }) {
           checkSavedPost={checkSavedPost}
           setCheckSavedPost={setCheckSavedPost}
           images={post.images}
+          postRef={postRef}
         />
       )}
 
