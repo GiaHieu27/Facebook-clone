@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const React = require("../models/React");
+const User = require("../models/User");
 
 exports.reactPost = async (req, res) => {
   try {
@@ -34,10 +35,6 @@ exports.getReacts = async (req, res) => {
   try {
     const { id } = req.params;
     const reactArr = await React.find({ postRef: id });
-    // const check = await React.findOne({
-    //   postRef: id,
-    //   reactBy: req.user.id,
-    // });
 
     const newReact = reactArr.reduce((group, react) => {
       let key = react["react"];
@@ -45,8 +42,6 @@ exports.getReacts = async (req, res) => {
       group[key].push(react);
       return group;
     }, {});
-
-    // console.log(newReact);
 
     const reacts = [
       { react: "like", count: newReact.like ? newReact.like.length : 0 },
@@ -60,7 +55,18 @@ exports.getReacts = async (req, res) => {
     const check = reactArr.find(
       (x) => x.reactBy.toString() === req.user.id
     )?.react;
-    res.json({ reacts, check, total: reactArr.length });
+
+    const user = await User.findById(req.user.id);
+    const checkPostSaved = user?.savedPosts.find(
+      (x) => x.post.toString() === req.params.id
+    );
+
+    res.json({
+      reacts,
+      check,
+      total: reactArr.length,
+      checkPostSaved: checkPostSaved ? true : false,
+    });
   } catch (e) {
     res.status(500).json({ message: e.message });
   }

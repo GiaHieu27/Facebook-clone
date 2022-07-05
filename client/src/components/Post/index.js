@@ -17,6 +17,7 @@ function Post({ post, user, profile }) {
   const [total, setTotal] = useState(0);
   const [comments, setComments] = useState([]);
   const [count, setCount] = useState(1);
+  const [checkSavedPost, setCheckSavedPost] = useState();
 
   useEffect(() => {
     getReactPosts();
@@ -35,6 +36,7 @@ function Post({ post, user, profile }) {
     setReacts(res.reacts);
     setCheck(res.check);
     setTotal(res.total);
+    setCheckSavedPost(res.checkPostSaved);
   };
 
   const handleReact = async (reactName) => {
@@ -112,10 +114,13 @@ function Post({ post, user, profile }) {
 
       {showMenu && (
         <PostMenu
-          userId={user.id}
+          user={user}
           postUserId={post.user._id}
+          postId={post._id}
           imageLenght={post?.images?.length}
           setShowMenu={setShowMenu}
+          checkSavedPost={checkSavedPost}
+          setCheckSavedPost={setCheckSavedPost}
         />
       )}
 
