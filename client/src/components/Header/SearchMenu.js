@@ -86,12 +86,8 @@ function SearchMenu({ color, setShowSearchMenu }) {
             ref={inputRef}
             onChange={(e) => setSearchTerm(e.target.value)}
             onKeyUp={() => handleSearch()}
-            onFocus={() => {
-              setIconVisible(false);
-            }}
-            onBlur={() => {
-              setIconVisible(true);
-            }}
+            onFocus={() => setIconVisible(false)}
+            onBlur={() => setIconVisible(true)}
           />
         </div>
       </div>
