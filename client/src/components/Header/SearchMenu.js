@@ -9,8 +9,8 @@ import { Return, Search } from "../../svg";
 function SearchMenu({ color, setShowSearchMenu }) {
   const user = useSelector((state) => state.user);
   const [iconVisible, setIconVisible] = useState(true);
-  const [searchterm, setSearchTerm] = useState("");
-  const [results, setResults] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
+  const [results, setResults] = useState([]);
   const [searchHistory, setSearchHistory] = useState([]);
 
   const menuRef = useRef(null);
@@ -37,22 +37,22 @@ function SearchMenu({ color, setShowSearchMenu }) {
   };
 
   const handleSearch = async () => {
-    if (searchterm === "") {
+    if (searchTerm === "") {
       setResults([]);
     } else {
-      const res = await functions.search(searchterm, user.token);
+      const res = await functions.search(searchTerm, user.token);
       setResults(res);
     }
   };
 
   const handleAddToHistorySearch = async (searchUser) => {
-    functions.addToSearchHistory(searchUser, user.token);
-    getHistorySearch();
+    const res = await functions.addToSearchHistory(searchUser, user.token);
+    if (res.status === "success") getHistorySearch();
   };
 
   const handelRemoveSearchHistory = async (searchUser) => {
-    functions.removeHistorySearch(searchUser, user.token);
-    getHistorySearch();
+    const res = await functions.removeHistorySearch(searchUser, user.token);
+    if (res.status === "success") getHistorySearch();
   };
 
   return (
@@ -82,7 +82,7 @@ function SearchMenu({ color, setShowSearchMenu }) {
           <input
             type="text"
             placeholder="Search Facebook"
-            value={searchterm}
+            value={searchTerm}
             ref={inputRef}
             onChange={(e) => setSearchTerm(e.target.value)}
             onKeyUp={() => handleSearch()}

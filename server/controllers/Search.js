@@ -38,6 +38,7 @@ exports.addToSearchHistory = async (req, res) => {
         },
       });
     }
+    res.json({ status: "success" });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -61,6 +62,7 @@ exports.removeHistorySearch = async (req, res) => {
       { _id: req.user.id },
       { $pull: { search: { user: searchUser } } }
     );
+    res.json({ status: "success" });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
