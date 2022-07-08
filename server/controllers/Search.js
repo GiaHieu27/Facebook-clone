@@ -53,3 +53,15 @@ exports.getSearchHistory = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+exports.removeHistorySearch = async (req, res) => {
+  try {
+    const { searchUser } = req.body;
+    await User.updateOne(
+      { _id: req.user.id },
+      { $pull: { search: { user: searchUser } } }
+    );
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};

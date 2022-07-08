@@ -8,11 +8,10 @@ import { Return, Search } from "../../svg";
 
 function SearchMenu({ color, setShowSearchMenu }) {
   const user = useSelector((state) => state.user);
-
   const [iconVisible, setIconVisible] = useState(true);
   const [searchterm, setSearchTerm] = useState("");
   const [results, setResults] = useState("");
-  const [searchHistory, setSearchHistory] = useState();
+  const [searchHistory, setSearchHistory] = useState([]);
 
   const menuRef = useRef(null);
   const inputRef = useRef(null);
@@ -27,6 +26,9 @@ function SearchMenu({ color, setShowSearchMenu }) {
 
   useEffect(() => {
     getHistorySearch();
+    return () => {
+      setSearchHistory([]);
+    };
   }, []);
 
   const getHistorySearch = async () => {
@@ -44,7 +46,12 @@ function SearchMenu({ color, setShowSearchMenu }) {
   };
 
   const handleAddToHistorySearch = async (searchUser) => {
-    await functions.addToSearchHistory(searchUser, user.token);
+    functions.addToSearchHistory(searchUser, user.token);
+    getHistorySearch();
+  };
+
+  const handelRemoveSearchHistory = async (searchUser) => {
+    functions.removeHistorySearch(searchUser, user.token);
     getHistorySearch();
   };
 
@@ -113,7 +120,11 @@ function SearchMenu({ color, setShowSearchMenu }) {
                     {user.user.first_name} {user.user.last_name}
                   </span>
                 </Link>
-                <i className="exit_icon"></i>
+
+                <i
+                  className="exit_icon"
+                  onClick={() => handelRemoveSearchHistory(user.user._id)}
+                ></i>
               </div>
             ))}
       </div>

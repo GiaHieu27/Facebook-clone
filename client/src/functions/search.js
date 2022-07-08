@@ -19,7 +19,7 @@ export const search = async (searchTerm, token) => {
 
 export const addToSearchHistory = async (searchUser, token) => {
   try {
-    const { data } = await axios.put(
+    await axios.put(
       `${process.env.REACT_APP_BACKEND_URL}/addToSearchHistory`,
       { searchUser },
       {
@@ -28,7 +28,6 @@ export const addToSearchHistory = async (searchUser, token) => {
         },
       }
     );
-    return data;
   } catch (error) {
     return error.response.data.message;
   }
@@ -45,6 +44,22 @@ export const getSearchHistory = async (token) => {
       }
     );
     return data;
+  } catch (error) {
+    return error.response.data.message;
+  }
+};
+
+export const removeHistorySearch = async (searchUser, token) => {
+  try {
+    await axios.put(
+      `${process.env.REACT_APP_BACKEND_URL}/removeHistorySearch`,
+      { searchUser },
+      {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      }
+    );
   } catch (error) {
     return error.response.data.message;
   }
