@@ -118,3 +118,19 @@ export const deleteRequest = async (id, token) => {
     return error.response.data.message;
   }
 };
+
+export const getFriend = async (token) => {
+  try {
+    const { data } = await axios.get(
+      `${process.env.REACT_APP_BACKEND_URL}/getFriend`,
+      {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      }
+    );
+    return { success: true, data };
+  } catch (error) {
+    return error.response.data.message;
+  }
+};

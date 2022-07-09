@@ -1,0 +1,57 @@
+.friends {
+  height: calc(100vh - 56px);
+  width: 100%;
+  margin-top: 56px;
+  display: grid;
+  color: $color-primary;
+
+  &_left {
+    background: $bg-primary;
+    box-shadow: 0 12px 12px $shadow-1;
+    padding: 10px;
+    position: fixed;
+    width: 360px;
+    height: 100%;
+
+    &_header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      h3 {
+        font-size: 21px;
+      }
+    }
+
+    .mmenu_item {
+      cursor: pointer;
+    }
+  }
+
+  &_right {
+    background: $bg-secondary;
+    padding: 2rem;
+    position: absolute;
+    top: 56px;
+    left: 360px;
+    right: 0;
+    width: calc(100% - 360px);
+    min-height: calc(100vh - 56px);
+  }
+}
+
+.active_friends {
+  background: $bg-secondary;
+
+  .small_circle {
+    background: #1876f2;
+  }
+
+  i {
+    filter: invert(100%);
+  }
+
+  .rArrow {
+    display: none;
+  }
+}

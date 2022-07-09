@@ -10,6 +10,7 @@ const {
   acceptRequest,
   unfriend,
   deleteRequest,
+  getFriend,
 } = require("../controllers/Friend");
 
 router.put("/addFriend/:id", authUser, addFriend);
@@ -19,5 +20,7 @@ router.put("/unfollow/:id", authUser, unfollow);
 router.put("/acceptRequest/:id", authUser, acceptRequest);
 router.put("/unfriend/:id", authUser, unfriend);
 router.put("/deleteRequest/:id", authUser, deleteRequest);
+
+router.get("/getFriend", authUser, getFriend);
 
 module.exports = router;

@@ -13,13 +13,14 @@ import NotLoggedInRoutes from "./routes/NotLoggedInRoutes";
 import Activate from "./pages/home/Activate";
 import ResetPassword from "./pages/reset";
 import CreratePostPopup from "./components/CreratePostPopup";
+import Friend from "./pages/friend";
 import { postsReducer } from "./functions/reducer";
 
 function App() {
   const [visible, setVisible] = useState(false);
   const { user } = useSelector((sate) => ({ ...sate }));
 
-  const [{ loading, posts, error }, dispatch] = useReducer(postsReducer, {
+  const [{ loading, posts }, dispatch] = useReducer(postsReducer, {
     loading: false,
     posts: [],
     error: "",
@@ -70,7 +71,7 @@ function App() {
         <Route element={<LoggedInRoutes />}>
           <Route path="/profile/" element={<Profile />} getPosts={getPosts} />
           <Route path="/profile/:username" element={<Profile />} />
-
+          <Route path="/friends" element={<Friend />} />
           <Route
             path="/"
             element={
