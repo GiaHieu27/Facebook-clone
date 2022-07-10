@@ -9,7 +9,7 @@
 
 .splitter1 {
   height: 1.3px;
-  background: $divider;
+  background: var(--divider);
   width: 17vw;
   margin: 6px 2px 0 12px;
 }
@@ -22,7 +22,7 @@
     justify-content: space-between;
     padding: 12px 0 7px 10px;
     font-weight: 600;
-    color: $color-secondary;
+    color: var(--color-secondary);
 
     &_right {
       display: flex;
@@ -47,7 +47,7 @@
   padding: 5px;
   border-radius: 10px;
   cursor: pointer;
-  color: $color-primary;
+  color: var(--color-primary);
   font-weight: 600;
 
   &_circle {

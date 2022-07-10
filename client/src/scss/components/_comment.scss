@@ -20,7 +20,7 @@
   }
 
   &_wrap {
-    background: $bg-forth;
+    background: var(--bg-forth);
     padding: 5px 15px;
     border-radius: 50px;
   }
@@ -31,7 +31,7 @@
     gap: 10px;
     font-size: 12px;
     font-weight: 600;
-    color: $color-secondary;
+    color: var(--color-secondary);
     margin-left: 10px;
   }
 }
@@ -41,7 +41,7 @@
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
-  color: $color-secondary;
+  color: var(--color-secondary);
 
   &:hover {
     text-decoration: underline;

@@ -1,0 +1,116 @@
+.dark {
+  --bg-primary: #242526;
+  --bg-secondary: #18191a;
+  --bg-third: #3a3b3c;
+  --bg-forth: #3a3b3c;
+  --bg-fifth: #888888;
+  --color-primary: #e4e6eb;
+  --color-secondary: #b0b3b8;
+
+  .blur {
+    background: rgba(1, 1, 1, 0.53);
+  }
+
+  .hover1:hover,
+  .hover2:hover {
+    background: var(--bg-third);
+  }
+
+  .header_right svg {
+    fill: #fff;
+  }
+
+  .all_right_circle i {
+    filter: invert(100%);
+  }
+
+  .active_header {
+    background: var(--light-blue-color) !important;
+  }
+
+  .active_header svg {
+    fill: var(--blue-color) !important;
+  }
+
+  .header_right .circle_icon:hover {
+    background: var(--bg-fifth);
+  }
+
+  input[type="text"] {
+    color: var(--color-primary);
+  }
+
+  .small_circle i,
+  .small_circle svg,
+  .white_circle svg,
+  .circle i {
+    filter: invert(100%) !important;
+  }
+
+  .left_home .small_circle {
+    background: var(--bg-fifth);
+  }
+
+  .open_post:hover {
+    background: #333;
+  }
+  .post_action i {
+    filter: invert(90%);
+  }
+  .post_menu i,
+  .post_menu img {
+    filter: invert(100%);
+  }
+  .comment_circle_icon i {
+    filter: invert(95%);
+  }
+  .comment_circle_icon:hover {
+    background: #555;
+  }
+  .box_privacy i,
+  .box_privacy img {
+    filter: invert(95%);
+  }
+  .emoji_icon_large:hover {
+    filter: invert(0);
+  }
+  .add_pics_wrap i {
+    filter: invert(100%);
+  }
+  /*----profile---*/
+  .active_link:hover {
+    background: var(--light-blue-color);
+  }
+  .open_cover_menu i,
+  .open_cover_menu img {
+    filter: invert(100%);
+  }
+  .profile_circle i {
+    filter: invert(100%);
+  }
+  .gray_btn {
+    background: var(--bg-third);
+  }
+  .gray_btn:hover {
+    background: #777;
+  }
+  .gray_btn i,
+  .gray_btn img {
+    filter: invert(100%);
+  }
+  .profile_container svg {
+    filter: invert(88%);
+  }
+  .grid_icon {
+    filter: invert(80%);
+  }
+  .pictureBox i {
+    filter: invert(100%) !important;
+  }
+  .slider i {
+    filter: invert(100%);
+  }
+  .flex_p_t i {
+    filter: invert(100%);
+  }
+}

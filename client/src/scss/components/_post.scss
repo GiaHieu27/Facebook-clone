@@ -6,11 +6,11 @@
 .post {
   position: relative;
   width: 685px;
-  background: $bg-primary;
+  background: var(--bg-primary);
   border-radius: 10px;
-  box-shadow: 0 1px 2px $shadow-1;
+  box-shadow: 0 1px 2px var(--shadow-1);
   user-select: none;
-  color: $color-primary;
+  color: var(--color-primary);
   margin-bottom: 10px;
 
   &_header {
@@ -48,7 +48,7 @@
       display: flex;
       align-items: center;
       font-size: 12px;
-      color: $color-secondary;
+      color: var(--color-secondary);
     }
   }
 
@@ -61,6 +61,10 @@
     font-size: 22px;
     background-repeat: no-repeat;
     background-size: cover;
+
+    &_text {
+      color: #000;
+    }
   }
 
   &_text {
@@ -79,8 +83,8 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     padding: 0 8px 5px 8px;
-    border-top: 1px solid $bg-third;
-    border-bottom: 1px solid $bg-third;
+    border-top: 1px solid var(--bg-third);
+    border-bottom: 1px solid var(--bg-third);
     margin: 0 10px;
     padding: 5px 0;
   }
@@ -96,7 +100,7 @@
     border-radius: 5px;
 
     span {
-      color: $color-secondary;
+      color: var(--color-secondary);
       font-weight: 600;
       font-size: 14px;
       transform: translateY(-1px);
@@ -105,9 +109,9 @@
   }
 
   &_menu {
-    background: $bg-primary;
+    background: var(--bg-primary);
     width: 300px;
-    box-shadow: 1px 0 2px $shadow-1;
+    box-shadow: 1px 0 2px var(--shadow-1);
     border-radius: 10px;
     position: absolute;
     top: 3.1rem;
@@ -147,7 +151,7 @@
     left: 0;
     height: 300px;
     width: 100%;
-    background: $bg-third;
+    background: var(--bg-third);
 
     img {
       width: 100%;
@@ -162,7 +166,7 @@
     height: 420px;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid $bg-primary;
+    border: 3px solid var(--bg-primary);
   }
 
   &_cover_wrap {
@@ -183,7 +187,7 @@
 }
 
 .updated_p {
-  color: $color-secondary;
+  color: var(--color-secondary);
   font-weight: normal;
 }
 
@@ -217,7 +221,7 @@
 
     &_num {
       font-size: 14px;
-      color: $color-secondary;
+      color: var(--color-secondary);
     }
   }
 
@@ -226,11 +230,11 @@
     align-items: center;
     position: absolute;
     top: -3.4rem;
-    background: $bg-primary;
+    background: var(--bg-primary);
     padding: 5px 15px;
     border-radius: 50px;
     gap: 8px;
-    box-shadow: 0 1px 2px $shadow-1;
+    box-shadow: 0 1px 2px var(--shadow-1);
   }
 }
 
@@ -253,7 +257,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  color: $color-secondary;
+  color: var(--color-secondary);
   font-size: 15px;
 }
 
@@ -491,7 +495,7 @@
     height: 100%;
     display: flex;
     align-items: center;
-    background: $bg-forth;
+    background: var(--bg-forth);
     border-radius: 50px;
     padding-right: 10px;
 
@@ -501,8 +505,12 @@
       flex: 1;
       height: 35px;
       padding: 0 10px;
-      color: $color-primary;
+      color: var(--color-primary);
       background: transparent;
+
+      &::placeholder {
+        color: var(--color-secondary);
+      }
     }
   }
 

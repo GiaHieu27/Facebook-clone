@@ -3,14 +3,14 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: $bg-primary;
-  box-shadow: 0 1px 2px $shadow-1;
+  background: var(--bg-primary);
+  box-shadow: 0 1px 2px var(--shadow-1);
   border-radius: 10px;
   padding: 15px;
   padding-bottom: 1rem;
   width: 350px;
   height: fit-content;
-  color: $color-primary;
+  color: var(--color-primary);
 
   &_header {
     position: relative;
@@ -18,7 +18,7 @@
     flex-direction: column;
     gap: 10px;
     padding-bottom: 10px;
-    border-bottom: 1px solid $bg-third;
+    border-bottom: 1px solid var(--bg-third);
 
     i {
       position: absolute;
@@ -34,7 +34,7 @@
 
       &:last-of-type {
         font-size: 15px;
-        color: $color-secondary;
+        color: var(--color-secondary);
       }
     }
   }
@@ -59,7 +59,7 @@
       align-items: center;
       gap: 2px;
       font-size: 13px;
-      color: $color-secondary;
+      color: var(--color-secondary);
 
       i {
         margin-top: 3px;
@@ -85,8 +85,8 @@
     select {
       width: 90px;
       font-size: 16px;
-      color: $color-primary;
-      background: $bg-primary;
+      color: var(--color-primary);
+      background: var(--bg-primary);
       border-radius: 5px;
       cursor: pointer;
     }
@@ -97,10 +97,10 @@
       align-items: center;
       justify-content: space-between;
       font-size: 16px;
-      color: $color-primary;
+      color: var(--color-primary);
       border-radius: 5px;
       cursor: pointer;
-      border: 1px solid $color-secondary;
+      border: 1px solid var(--color-secondary);
       padding: 0 10px;
     }
   }
@@ -108,10 +108,10 @@
   &_infos {
     font-size: 11px;
     margin-top: 10px;
-    color: $color-secondary;
+    color: var(--color-secondary);
 
     span {
-      color: $blue-color;
+      color: var(--blue-color);
     }
   }
 

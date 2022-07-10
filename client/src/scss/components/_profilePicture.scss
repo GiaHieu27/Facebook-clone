@@ -18,7 +18,7 @@
       }
 
       .light_blue_btn {
-        color: $blue-color;
+        color: var(--blue-color);
       }
     }
   }
@@ -68,19 +68,19 @@
   resize: none;
   border-radius: 7px;
   outline-offset: 5px;
-  border-color: $bg-third;
+  border-color: var(--bg-third);
   padding: 1.1rem;
   font-size: 16px;
   font-family: inherit;
-  background: $bg-primary;
-  color: $color-primary;
+  background: var(--bg-primary);
+  color: var(--color-primary);
 
   &:focus {
-    outline-color: $blue-color;
+    outline-color: var(--blue-color);
   }
 
   &:hover {
-    border-color: $color-secondary;
+    border-color: var(--color-secondary);
   }
 }
 
@@ -130,9 +130,9 @@
       outline: none;
       border-radius: 50%;
       background: #fff;
-      box-shadow: 0 2px 2px $shadow-1, 0 2px 2px 0 $shadow-2,
-        inset 0 0 0 1px $shadow-inset;
-      border: 1px solid $bg-third;
+      box-shadow: 0 2px 2px var(--shadow-1), 0 2px 2px 0 var(--shadow-2),
+        inset 0 0 0 1px var(--shadow-inset);
+      border: 1px solid var(--bg-third);
     }
   }
 }
@@ -150,13 +150,13 @@
   align-items: center;
   gap: 10px;
   padding: 15px;
-  color: $color-secondary;
+  color: var(--color-secondary);
   font-size: 17px;
-  border-bottom: 1px solid $bg-third;
+  border-bottom: 1px solid var(--bg-third);
 }
 
 .blue_link {
-  color: $blue-color;
+  color: var(--blue-color);
   font-weight: 600;
   font-size: 15px;
   cursor: pointer;
@@ -181,7 +181,7 @@
   }
 
   &:first-of-type {
-    border-bottom: 1px solid $bg-third;
+    border-bottom: 1px solid var(--bg-third);
   }
 
   &_wrap {

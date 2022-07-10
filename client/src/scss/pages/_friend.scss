@@ -3,11 +3,11 @@
   width: 100%;
   margin-top: 56px;
   display: grid;
-  color: $color-primary;
+  color: var(--color-primary);
 
   &_left {
-    background: $bg-primary;
-    box-shadow: 0 12px 12px $shadow-1;
+    background: var(--bg-primary);
+    box-shadow: 0 12px 12px var(--shadow-1);
     padding: 10px;
     position: fixed;
     width: 360px;
@@ -29,7 +29,7 @@
   }
 
   &_right {
-    background: $bg-secondary;
+    background: var(--bg-secondary);
     padding: 10px 26px;
     position: absolute;
     top: 56px;
@@ -40,7 +40,7 @@
 
     &_wrap {
       padding-bottom: 10px;
-      border-bottom: 1px solid $bg-third;
+      border-bottom: 1px solid var(--bg-third);
 
       .flex_wrap {
         margin-top: 10px;
@@ -54,7 +54,7 @@
 }
 
 .active_friends {
-  background: $bg-secondary;
+  background: var(--bg-secondary);
 
   .small_circle {
     background: #1876f2;
@@ -70,14 +70,14 @@
 }
 
 .see_link {
-  color: $blue-color;
+  color: var(--blue-color);
   padding: 5px;
   cursor: pointer;
 }
 
 .req_card {
-  background: $bg-primary;
-  box-shadow: 1px 1px 1px $shadow-1;
+  background: var(--bg-primary);
+  box-shadow: 1px 1px 1px var(--shadow-1);
   width: 210px;
   height: fit-content;
   padding-bottom: 10px;

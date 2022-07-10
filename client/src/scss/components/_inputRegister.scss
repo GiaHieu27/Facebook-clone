@@ -5,7 +5,7 @@
 
       input {
         width: 300px;
-        background: $bg-secondary;
+        background: var(--bg-secondary);
       }
 
       .input_error {

@@ -3,12 +3,12 @@ header {
   top: 0;
   height: 56px;
   z-index: 99;
-  background: $bg-primary;
+  background: var(--bg-primary);
   width: 100%;
-  box-shadow: 1px 8px 15px -7px $shadow-2;
+  box-shadow: 1px 8px 15px -7px var(--shadow-2);
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  color: $color-primary;
+  color: var(--color-primary);
 }
 
 .header {
@@ -53,7 +53,7 @@ header {
     align-items: center;
     justify-content: center;
     margin-left: 8px;
-    background: $bg-third;
+    background: var(--bg-third);
     cursor: pointer;
   }
 }
@@ -62,7 +62,7 @@ header {
   display: flex;
   align-items: center;
   gap: 8px;
-  background: $bg-forth;
+  background: var(--bg-forth);
   padding: 10px 32px 10px 10px;
   border-radius: 50px;
   cursor: text;
@@ -76,6 +76,7 @@ header {
 
     &::placeholder {
       transform: translateY(-1px);
+      color: var(--color-primary);
     }
   }
 }
@@ -109,7 +110,7 @@ header {
 }
 
 .active {
-  border-bottom: 3px solid $blue-color;
+  border-bottom: 3px solid var(--blue-color);
   border-radius: 0;
   height: 56px;
   transform: translateX(0);
@@ -119,16 +120,16 @@ header {
   }
 
   &_header {
-    background: $light-blue-color;
+    background: var(--light-blue-color);
 
     svg {
-      fill: $blue-color;
+      fill: var(--blue-color);
     }
   }
 
   &_link {
-    background: $light-blue-color;
-    color: $blue-color;
+    background: var(--light-blue-color);
+    color: var(--blue-color);
   }
 }
 

@@ -1,6 +1,6 @@
 .home {
   min-height: 100vh;
-  background: $bg-secondary;
+  background: var(--bg-secondary);
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 
@@ -14,8 +14,8 @@
 
 .popup {
   position: relative;
-  background: $bg-primary;
-  box-shadow: 0 1px 2px $shadow-1;
+  background: var(--bg-primary);
+  box-shadow: 0 1px 2px var(--shadow-1);
   width: 40vw;
   height: 200px;
   position: fixed;
@@ -31,7 +31,7 @@
     align-items: center;
     justify-content: center;
     font-weight: 600;
-    border-bottom: 1px solid $bg-third;
+    border-bottom: 1px solid var(--bg-third);
     padding: 15px;
   }
 
@@ -42,17 +42,17 @@
 }
 
 .send_verification {
-  background: $bg-primary;
-  box-shadow: 0 1px 2px $shadow-1;
+  background: var(--bg-primary);
+  box-shadow: 0 1px 2px var(--shadow-1);
   padding: 20px;
   font-size: 14px;
-  color: $color-primary;
+  color: var(--color-primary);
   display: flex;
   flex-direction: column;
   border-radius: 10px;
 }
 .send_verification a {
-  color: $blue-color;
+  color: var(--blue-color);
   cursor: pointer;
 }
 .send_verification a:hover {
@@ -95,7 +95,7 @@
     }
 
     &_link {
-      background: $bg-third;
+      background: var(--bg-third);
       width: 55px;
       height: 55px;
       border-radius: 50%;

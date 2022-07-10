@@ -1,7 +1,7 @@
 .blue_btn {
   border: none;
   outline: none;
-  background: $blue-color;
+  background: var(--blue-color);
   padding: 8.5px 12px;
   border-radius: 7px;
   font-family: inherit;
@@ -18,7 +18,7 @@
 .light_blue_btn {
   border: none;
   outline: none;
-  background: $light-blue-color;
+  background: var(--light-blue-color);
   padding: 8.5px 12px;
   border-radius: 7px;
   font-family: inherit;
@@ -35,13 +35,13 @@
 .gray_btn {
   border: none;
   outline: none;
-  background: $bg-secondary;
+  background: var(--bg-secondary);
+  color: var(--color-primary);
   padding: 8.5px 12px;
   border-radius: 7px;
   font-family: inherit;
   font-weight: 600;
   font-size: 14px;
-  color: #111;
   display: flex;
   align-items: center;
   justify-content: center;

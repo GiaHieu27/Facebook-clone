@@ -9,10 +9,10 @@
 }
 
 .hover1:hover {
-  background: $bg-secondary;
+  background: var(--bg-secondary);
 }
 .hover2:hover {
-  background: $bg-third;
+  background: var(--bg-third);
 }
 .hover3:hover {
   background: #d4d6da3a;
@@ -41,7 +41,7 @@
   align-items: center;
   justify-content: center;
   margin-right: 11px;
-  background: $bg-third;
+  background: var(--bg-third);
   cursor: pointer;
 }
 

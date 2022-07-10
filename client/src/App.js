@@ -58,7 +58,7 @@ function App() {
   // console.log(posts);
 
   return (
-    <>
+    <div className="dark">
       {visible && (
         <CreratePostPopup
           user={user}
@@ -91,7 +91,7 @@ function App() {
         </Route>
         <Route path="/reset" element={<ResetPassword />} />
       </Routes>
-    </>
+    </div>
   );
 }
 

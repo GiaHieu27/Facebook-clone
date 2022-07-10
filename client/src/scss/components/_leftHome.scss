@@ -1,4 +1,3 @@
-/*-------------Left Home-----------------*/
 .left {
   &_home {
     position: fixed;
@@ -7,10 +6,14 @@
     max-height: 100vh;
     width: 15vw;
     overflow-y: auto;
-    color: $color-primary;
+    color: var(--color-primary);
     padding: 15px 0;
     padding-bottom: 5rem;
     user-select: none;
+
+    .small_circle {
+      background: rgb(214, 214, 214);
+    }
   }
 
   &_link {
@@ -49,7 +52,7 @@
   &_2 {
     position: relative;
     font-size: 12px;
-    color: $blue-color;
+    color: var(--blue-color);
     margin-left: 9px;
     margin-top: 2px;
     font-weight: normal;
@@ -59,7 +62,7 @@
       width: 7px;
       height: 7px;
       border-radius: 50%;
-      background: $blue-color;
+      background: var(--blue-color);
       position: absolute;
       left: -10px;
       bottom: 2px;
@@ -73,7 +76,7 @@
 
 .splitter {
   height: 1.3px;
-  background: $divider;
+  background: var(--divider);
   margin: 9px 2px 0 12px;
 }
 .shortcut {
@@ -111,13 +114,13 @@
 .heading {
   font-size: 16px;
   font-weight: 600;
-  color: $color-secondary;
+  color: var(--color-secondary);
   padding: 13px 10px 11px 10px;
 }
 
 .edit_shortcut {
   font-size: 14px;
-  color: $blue-color;
+  color: var(--blue-color);
   display: none;
 
   cursor: pointer;
@@ -128,7 +131,7 @@
   bottom: 14px;
   left: 10px;
   font-size: 12px;
-  color: $color-secondary;
+  color: var(--color-secondary);
   width: 15vw;
 }
 .relative_fb_copyright {
@@ -136,7 +139,5 @@
   width: 97%;
   margin-top: 2rem;
   font-size: 12px;
-  color: $color-secondary;
+  color: var(--color-secondary);
 }
-
-/*-------------Left Home-----------------*/

@@ -10,13 +10,13 @@ function LeftHome({ user }) {
 
   return (
     <div className="left_home scrollbar">
-      <Link to="/profile" className="left_link hover1">
+      <Link to="/profile" className="left_link hover2">
         <img src={user?.picture} alt="" />
         <span>
           {user?.first_name} {user.last_name}
         </span>
       </Link>
-      {left.slice(0, 8).map((link, i) => (
+      {left.slice(0, 5).map((link, i) => (
         <LeftLink
           key={i}
           img={link.img}
@@ -26,7 +26,7 @@ function LeftHome({ user }) {
       ))}
 
       {!visible && (
-        <div className="left_link hover1" onClick={() => setVisible(!visible)}>
+        <div className="left_link hover2" onClick={() => setVisible(!visible)}>
           <div className="small_circle">
             <ArrowDown1 />
           </div>
@@ -36,7 +36,7 @@ function LeftHome({ user }) {
 
       {visible && (
         <div className="more_left">
-          {left.slice(8, left.length).map((link, i) => (
+          {left.slice(5, left.length).map((link, i) => (
             <LeftLink
               key={i}
               img={link.img}
@@ -45,7 +45,7 @@ function LeftHome({ user }) {
             />
           ))}
           <div
-            className="left_link hover1"
+            className="left_link hover2"
             onClick={() => setVisible(!visible)}
           >
             <div className="small_circle rotate360">
@@ -57,10 +57,6 @@ function LeftHome({ user }) {
       )}
 
       <div className="splitter"></div>
-      {/* <div className="shortcut">
-        <div className="heading">Your Shortcuts</div>
-        <div className="edit_shortcut">Edit</div>
-      </div> */}
 
       <div className={`fb_copyright ${visible && "relative_fb_copyright"}`}>
         <Link to="/">Privacy </Link>
