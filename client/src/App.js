@@ -72,6 +72,7 @@ function App() {
           <Route path="/profile/" element={<Profile />} getPosts={getPosts} />
           <Route path="/profile/:username" element={<Profile />} />
           <Route path="/friends" element={<Friend />} />
+          <Route path="/friends/:type" element={<Friend />} />
           <Route
             path="/"
             element={
