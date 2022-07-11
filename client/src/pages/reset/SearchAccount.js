@@ -1,8 +1,8 @@
 import { Form, Formik } from "formik";
 import { Link } from "react-router-dom";
+import HashLoader from "react-spinners/HashLoader";
 import * as Yup from "yup";
 import axios from "axios";
-
 import LoginInput from "../../components/Inputs/LoginInput";
 
 function SearchAccount({ email, ...props }) {
@@ -53,7 +53,7 @@ function SearchAccount({ email, ...props }) {
               />
               {props.error && <div className="error_text">{props.error}</div>}
               <div className="reset_form_btns">
-                <Link to="./login" className="gray_btn">
+                <Link to="/login" className="gray_btn">
                   Cancel
                 </Link>
                 <button type="submit" className="blue_btn">
@@ -64,7 +64,7 @@ function SearchAccount({ email, ...props }) {
           )}
         </Formik>
       </div>
-      {}
+      {props.loading && <HashLoader color="blue" size={30} />}
     </>
   );
 }

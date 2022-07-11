@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function HelpSupport({ setVisible }) {
   return (
     <div className="absolute_wrap">
@@ -10,14 +12,14 @@ function HelpSupport({ setVisible }) {
         >
           <i className="arrow_back_icon"></i>
         </div>
-        Help &am; Support
+        Help &amp; Support
       </div>
-      <div className="mmenu_item hover3">
+      <Link to="/reset" className="mmenu_item hover3">
         <div className="small_circle">
           <i className="help_center_icon"></i>
         </div>
-        <span>Help Center</span>
-      </div>
+        <span>Forgot Password</span>
+      </Link>
       <div className="mmenu_item hover3">
         <div className="small_circle">
           <i className="email_icon"></i>

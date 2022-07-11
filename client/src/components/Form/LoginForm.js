@@ -1,13 +1,13 @@
 // import lib
 import { useState } from "react";
 import { Formik, Form } from "formik";
-import * as Yub from "yup";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import HashLoader from "react-spinners/HashLoader";
 import axios from "axios";
-import { useDispatch } from "react-redux";
 import Cookies from "js-cookie";
-import { useNavigate } from "react-router-dom";
+import * as Yub from "yup";
 
 // import project
 import LoginInput from "../../components/Inputs/LoginInput";
@@ -119,9 +119,7 @@ function LoginForm({ setVisible }) {
           <div className="sign_splitter"></div>
           <button
             className="blue_btn open_signup"
-            onClick={() => {
-              setVisible(true);
-            }}
+            onClick={() => setVisible(true)}
           >
             Create Account
           </button>

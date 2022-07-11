@@ -1,4 +1,11 @@
+import { useDispatch, useSelector } from "react-redux";
+import Cookies from "js-cookie";
+import themeReducer from "../../../redux/reducers/themeReducer";
+
 function DisplayAccessibility({ setVisible }) {
+  const dispatch = useDispatch();
+  const darkTheme = useSelector((sate) => sate.theme);
+
   return (
     <div className="absolute_wrap">
       <div className="absolute_wrap_header">
@@ -24,13 +31,36 @@ function DisplayAccessibility({ setVisible }) {
           </span>
         </div>
       </div>
-      <label htmlFor="darkOff" className="hover1">
+
+      <label
+        htmlFor="darkOff"
+        className="hover1"
+        onClick={() => {
+          dispatch(themeReducer.actions.LIGHT());
+          Cookies.set("darkTheme", false);
+        }}
+      >
         <span>Off</span>
-        <input type="radio" name="dark" id="darkOff" />
+        {!darkTheme ? (
+          <input type="radio" name="dark" id="darkOff" checked />
+        ) : (
+          <input type="radio" name="dark" id="darkOff" />
+        )}
       </label>
-      <label htmlFor="darkOn" className="hover1">
+      <label
+        htmlFor="darkOn"
+        className="hover1"
+        onClick={() => {
+          dispatch(themeReducer.actions.DARK());
+          Cookies.set("darkTheme", true);
+        }}
+      >
         <span>On</span>
-        <input type="radio" name="dark" id="darkOn" />
+        {darkTheme ? (
+          <input type="radio" name="dark" id="darkOn" checked />
+        ) : (
+          <input type="radio" name="dark" id="darkOn" />
+        )}
       </label>
       <div className="mmenu_main">
         <div className="small_circle" style={{ width: "50px" }}>

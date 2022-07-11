@@ -12,12 +12,14 @@ import userSlice from "./redux/reducers/userReducer";
 import profileSlice from "./redux/reducers/profileReducer";
 import friendSlice from "./redux/reducers/friendsReducer";
 import { ProfileProvider } from "./profileContext/Context";
+import themeSlice from "./redux/reducers/themeReducer";
 
 const store = configureStore({
   reducer: {
     user: userSlice.reducer,
     profile: profileSlice.reducer,
     friends: friendSlice.reducer,
+    theme: themeSlice.reducer,
   },
 });
 

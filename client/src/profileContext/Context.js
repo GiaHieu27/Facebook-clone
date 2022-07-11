@@ -65,8 +65,6 @@ function ProfileProvider({ children }) {
     }
   };
 
-  // console.log(profile);
-
   return (
     <ProfileContext.Provider
       value={{

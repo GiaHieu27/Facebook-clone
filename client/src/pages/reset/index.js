@@ -34,7 +34,9 @@ function ResetPassword() {
   return (
     <div className="reset">
       <div className="reset_header">
-        <img src="../../../icons/facebook.svg" alt="" />
+        <Link to="/">
+          <img src="../../../icons/facebook.svg" alt="" />
+        </Link>
         {user ? (
           <div className="right_reset">
             <Link to="/profile">
@@ -56,6 +58,7 @@ function ResetPassword() {
             email={email}
             setEmail={setEmail}
             error={error}
+            loading={loading}
             setError={setError}
             setLoading={setLoading}
             setVisible={setVisible}

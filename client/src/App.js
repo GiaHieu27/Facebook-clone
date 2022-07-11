@@ -18,7 +18,7 @@ import { postsReducer } from "./functions/reducer";
 
 function App() {
   const [visible, setVisible] = useState(false);
-  const { user } = useSelector((sate) => ({ ...sate }));
+  const { user, theme } = useSelector((sate) => ({ ...sate }));
 
   const [{ loading, posts }, dispatch] = useReducer(postsReducer, {
     loading: false,
@@ -55,10 +55,8 @@ function App() {
     }
   };
 
-  // console.log(posts);
-
   return (
-    <div className="dark">
+    <div className={theme ? "dark" : ""}>
       {visible && (
         <CreratePostPopup
           user={user}
