@@ -13,7 +13,6 @@ import { updateCover } from "../../functions/profile";
 
 function Cover({ cover, visitor, photos }) {
   const { user } = useSelector((state) => ({ ...state }));
-  const navigate = useNavigate();
 
   const [showCoverMenu, setShowCoverMenu] = useState(false);
   const [coverPicture, setCoverPicture] = useState("");
@@ -111,7 +110,6 @@ function Cover({ cover, visitor, photos }) {
           setLoading(false);
           setCoverPicture("");
           coverRef.current.src = res[0].url;
-          navigate(0);
         } else {
           setLoading(false);
           setError(newPost);

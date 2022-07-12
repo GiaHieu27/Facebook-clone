@@ -3,6 +3,8 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useMediaQuery } from "react-responsive";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 import axios from "axios";
 
 // project
@@ -121,16 +123,86 @@ function Profile({ getPosts }) {
 
       <div className="profile_top" ref={profileTopRef}>
         <div className="profile_container">
-          <Cover
-            cover={profile.cover}
-            visitor={visitor}
-            photos={photos.resources}
-          />
-          <ProfilePictureInfos
-            profile={profile}
-            visitor={visitor}
-            photos={photos.resources}
-          />
+          {loading ? (
+            <>
+              <div className="profile_cover">
+                <Skeleton
+                  height="347px"
+                  containerClassName="avatar-skeleton"
+                  style={{ borderRadius: "8px" }}
+                />
+              </div>
+              <div
+                className="profile_img_wrap"
+                style={{ marginBottom: "-3rem", transform: "translateY(-8px)" }}
+              >
+                <div className="profile_w_left">
+                  <Skeleton
+                    height="180px"
+                    width="180px"
+                    circle
+                    containerClassName="avatar-skeleton"
+                    style={{ transform: "translateY(-3.3rem)" }}
+                  />
+                  <div className="profile_w_col">
+                    <div className="profile_name">
+                      <Skeleton
+                        height="33px"
+                        width="200px"
+                        containerClassName="avatar-skeleton"
+                        style={{ transform: "translateY(10px)" }}
+                      />
+                      <Skeleton
+                        height="26px"
+                        width="100px"
+                        containerClassName="avatar-skeleton"
+                        style={{ transform: "translateY(14px)" }}
+                      />
+                    </div>
+                    <div className="profile_friend_count">
+                      <Skeleton
+                        height="15px"
+                        width="90px"
+                        containerClassName="avatar-skeleton"
+                        style={{ transform: "translateY(12px)" }}
+                      />
+                    </div>
+                    <div className="profile_friend_imgs">
+                      {Array.from(new Array(6), (val, index) => index + 1).map(
+                        (val, i) => (
+                          <Skeleton
+                            circle
+                            height="32px"
+                            width="32px"
+                            key={i}
+                            containerClassName="avatar-skeleton"
+                            style={{
+                              transform: `translateY(5px) translateX(${
+                                -i * 7
+                              }px)`,
+                            }}
+                          />
+                        )
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </>
+          ) : (
+            <>
+              <Cover
+                cover={profile.cover}
+                visitor={visitor}
+                photos={photos.resources}
+              />
+              <ProfilePictureInfos
+                profile={profile}
+                visitor={visitor}
+                photos={photos.resources}
+              />
+            </>
+          )}
           <ProfileMenu />
         </div>
       </div>
