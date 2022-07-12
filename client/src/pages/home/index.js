@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
+import ScaleLoader from "react-spinners/ScaleLoader";
 
 import Header from "../../components/Header";
 import LeftHome from "../../components/Home/Left";
@@ -16,7 +17,7 @@ function Home({ setVisible, posts, loading, getPosts }) {
 
   useEffect(() => {
     setHeight(middle.current.clientHeight);
-  }, []);
+  }, [loading, height]);
 
   return (
     <div className="home" style={{ height: `${height + 150}px` }}>
@@ -26,11 +27,17 @@ function Home({ setVisible, posts, loading, getPosts }) {
         <Stories />
         {!user.verified && <SenVerification user={user} />}
         <CreatePost user={user} setVisible={setVisible} />
-        <div className="posts">
-          {posts.map((post) => (
-            <Post key={post._id} post={post} user={user} />
-          ))}
-        </div>
+        {loading ? (
+          <div className="sekeleton_loader">
+            <ScaleLoader color="#1876f2" />
+          </div>
+        ) : (
+          <div className="posts">
+            {posts.map((post) => (
+              <Post key={post._id} post={post} user={user} />
+            ))}
+          </div>
+        )}
       </div>
       <RightHome user={user} />
     </div>

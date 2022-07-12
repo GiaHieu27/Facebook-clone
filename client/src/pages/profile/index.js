@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { useMediaQuery } from "react-responsive";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import ScaleLoader from "react-spinners/ScaleLoader";
 import axios from "axios";
 
 // project
@@ -20,8 +21,8 @@ import Post from "../../components/Post";
 import Photos from "./Photos";
 import Friends from "./Friends";
 import Intro from "../../components/Intro";
-import { ProfileContext } from "../../profileContext/Context";
 import CreratePostPopup from "../../components/CreratePostPopup";
+import { ProfileContext } from "../../profileContext/Context";
 
 function Profile({ getPosts }) {
   const navigate = useNavigate();
@@ -91,6 +92,9 @@ function Profile({ getPosts }) {
 
   const check = useMediaQuery({
     query: "(min-width: 901px)",
+  });
+  const friend = useMediaQuery({
+    query: "(max-width: 770px)",
   });
 
   useEffect(() => {
@@ -167,7 +171,10 @@ function Profile({ getPosts }) {
                         style={{ transform: "translateY(12px)" }}
                       />
                     </div>
-                    <div className="profile_friend_imgs">
+                    <div
+                      className="profile_friend_imgs"
+                      style={{ marginLeft: `${!friend ? 0 : 35}px` }}
+                    >
                       {Array.from(new Array(6), (val, index) => index + 1).map(
                         (val, i) => (
                           <Skeleton
@@ -185,6 +192,27 @@ function Profile({ getPosts }) {
                         )
                       )}
                     </div>
+                  </div>
+                </div>
+                <div className={`friendship ${!visitor && "fix"}`}>
+                  <Skeleton
+                    height="36px"
+                    width="120px"
+                    containerClassName="avatar-skeleton"
+                  />
+                  <div className="flex">
+                    <Skeleton
+                      height="36px"
+                      width="120px"
+                      containerClassName="avatar-skeleton"
+                    />
+                    {visitor && (
+                      <Skeleton
+                        height="36px"
+                        width="120px"
+                        containerClassName="avatar-skeleton"
+                      />
+                    )}
                   </div>
                 </div>
               </div>
@@ -222,13 +250,50 @@ function Profile({ getPosts }) {
               }`}
             >
               <div className="profile_left" ref={leftSideRef}>
-                <Intro visitor={visitor} />
-                <Photos
-                  userParam={userParam}
-                  token={user.token}
-                  photos={photos}
-                />
-                <Friends friends={profile.friends} />
+                {loading ? (
+                  <>
+                    <div className="profile_card">
+                      <div className="profile_card_header">Intro</div>
+                      <div className="sekeleton_loader">
+                        <ScaleLoader color="#1876f2" />
+                      </div>
+                    </div>
+
+                    <div className="profile_card">
+                      <div className="profile_card_header">
+                        Photos
+                        <div className="profile_header_link">
+                          See all photos
+                        </div>
+                      </div>
+                      <div className="sekeleton_loader">
+                        <ScaleLoader color="#1876f2" />
+                      </div>
+                    </div>
+
+                    <div className="profile_card">
+                      <div className="profile_card_header">
+                        Friends
+                        <div className="profile_header_link">
+                          See all friends
+                        </div>
+                      </div>
+                      <div className="sekeleton_loader">
+                        <ScaleLoader color="#1876f2" />
+                      </div>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <Intro visitor={visitor} />
+                    <Photos
+                      userParam={userParam}
+                      token={user.token}
+                      photos={photos}
+                    />
+                    <Friends friends={profile.friends} />
+                  </>
+                )}
 
                 <div className="relative_fb_copyright">
                   <Link to="/">Privacy </Link>
@@ -253,18 +318,24 @@ function Profile({ getPosts }) {
                   <CreatePost user={user} profile setVisible={setVisible} />
                 )}
                 <GridPost />
-                <div className="posts">
-                  {profile.posts && profile.posts.length ? (
-                    profile.posts.map((post, i) => (
-                      <Post key={i} post={post} user={user} profile />
-                    ))
-                  ) : (
-                    <div className="no_posts">
-                      Người dùng {profile.first_name} {profile.last_name} chưa
-                      đăng bài viết
-                    </div>
-                  )}
-                </div>
+                {loading ? (
+                  <div className="sekeleton_loader">
+                    <ScaleLoader color="#1876f2" />
+                  </div>
+                ) : (
+                  <div className="posts">
+                    {profile.posts && profile.posts.length ? (
+                      profile.posts.map((post, i) => (
+                        <Post key={i} post={post} user={user} profile />
+                      ))
+                    ) : (
+                      <div className="no_posts">
+                        Người dùng {profile.first_name} {profile.last_name} chưa
+                        đăng bài viết
+                      </div>
+                    )}
+                  </div>
+                )}
               </div>
             </div>
           </div>

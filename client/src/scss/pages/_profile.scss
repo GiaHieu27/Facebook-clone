@@ -429,6 +429,9 @@
 .friends_menu_wrap {
   position: relative;
 }
+.fix {
+  flex-direction: row !important;
+}
 
 @media (max-width: 900px) {
   .profile {
@@ -504,9 +507,21 @@
   }
 }
 
+.react-loading-skeleton {
+  --base-color: #ececec !important;
+  --highlight-color: #1876f2 !important;
+}
+
+.sekeleton_loader {
+  height: 100px;
+  width: 100%;
+  display: grid;
+  place-items: center;
+}
+
 @media (min-width: 900px) {
   .friendship {
-    transform: translateX(-2rem);
+    transform: translateX(-1rem);
   }
 }
 
