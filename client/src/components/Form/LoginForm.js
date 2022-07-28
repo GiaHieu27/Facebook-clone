@@ -43,8 +43,6 @@ function LoginForm({ setVisible }) {
       );
       setError("");
 
-      console.log(data);
-
       setTimeout(() => {
         dispatch(userReducer.actions.LOGIN(data));
         Cookies.set("user", JSON.stringify(data));
@@ -82,9 +80,7 @@ function LoginForm({ setVisible }) {
               password,
             }}
             validationSchema={loginValidation}
-            onSubmit={() => {
-              loginSubmit();
-            }}
+            onSubmit={() => loginSubmit()}
           >
             {(formik) => (
               <Form>
