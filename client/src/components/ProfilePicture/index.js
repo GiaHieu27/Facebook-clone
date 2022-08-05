@@ -38,8 +38,6 @@ function ProfilePicture({ setShow, pRef, photos }) {
     };
   };
 
-  // console.log(photos);
-
   return (
     <div className="blur">
       <input
@@ -96,7 +94,6 @@ function ProfilePicture({ setShow, pRef, photos }) {
                 />
               ))}
           </div>
-
           <h4>Other Picture</h4>
           <div className="old_pictures">
             {photos

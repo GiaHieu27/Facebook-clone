@@ -11,7 +11,7 @@ import * as Yub from "yup";
 
 // import project
 import LoginInput from "../../components/Inputs/LoginInput";
-import userReducer from "../../redux/reducers/userReducer";
+import userReducer from "../../redux/slices/userSlice";
 
 const loginInfo = {
   email: "",

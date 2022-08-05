@@ -9,7 +9,7 @@ import useClickOutSide from "../../hooks/useClickOutSide";
 import PostError from "./PostError";
 import dataURLtoBlob from "../../helpers/dataURLtoBlob";
 import uploadImages from "../../functions/uploadImages";
-import profileReducer from "../../redux/reducers/profileReducer";
+import profileReducer from "../../redux/slices/profileSlice";
 import { createPost } from "../../functions/post";
 
 function CreratePostPopup({ user, setVisible, posts, dispatch, profile }) {

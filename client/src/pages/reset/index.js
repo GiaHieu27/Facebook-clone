@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Cookies from "js-cookie";
 
-import userReducer from "../../redux/reducers/userReducer";
+import userReducer from "../../redux/slices/userSlice";
 import SearchAccount from "./SearchAccount";
 import SendMail from "./SendMail";
 import CodeVerification from "./CodeVerification";

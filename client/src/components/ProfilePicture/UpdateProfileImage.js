@@ -1,20 +1,18 @@
 import { useCallback, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import Cropper from "react-easy-crop";
 import PulseLoader from "react-spinners/PulseLoader";
 
 import getCroppedImg from "../../helpers/getCroppedImg";
 import uploadImages from "../../functions/uploadImages";
-import userReducer from "../../redux/reducers/userReducer";
+import userReducer from "../../redux/slices/userSlice";
 import { updateProfilePicture } from "../../functions/profile";
 import { createPost } from "../../functions/post";
 
 function UpdateProfileImage({ image, setImage, setError, setShow, pRef }) {
   const { user } = useSelector((state) => ({ ...state }));
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const [description, setDescription] = useState("");
   const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
@@ -79,7 +77,7 @@ function UpdateProfileImage({ image, setImage, setError, setShow, pRef }) {
           user.token
         );
 
-        if (newPost === "ok") {
+        if (newPost.status === "ok") {
           setLoading(false);
           setImage("");
           pRef.current.style.backgroundImage = `url(${res[0].url})`;
@@ -92,18 +90,17 @@ function UpdateProfileImage({ image, setImage, setError, setShow, pRef }) {
           );
           dispatch(userReducer.actions.UPDATEPICTURE(res[0].url));
           setShow(false);
-          navigate(0);
         } else {
           setLoading(false);
           setError(newPost);
         }
       } else {
         setLoading(false);
-        setError(res);
+        setError(updatePicture);
       }
     } catch (error) {
       setLoading(false);
-      setError(error.response.data.error);
+      setError(error.response.data.message);
     }
   };
 

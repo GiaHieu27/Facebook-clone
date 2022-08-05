@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import Cropper from "react-easy-crop";
 import PulseLoader from "react-spinners/PulseLoader";
 
@@ -87,14 +86,13 @@ function Cover({ cover, visitor, photos }) {
       setLoading(true);
       let img = await getCroppedImage();
       let blob = await fetch(img).then((i) => i.blob());
-      // console.log(img);
-      // console.log(blob);
+      
       const path = `${user.username}/cover`;
       let formData = new FormData();
       formData.append("file", blob);
       formData.append("path", path);
       const res = await uploadImages(formData, user.token);
-      // console.log(response);
+      
       const update_cover = await updateCover(res[0].url, user.token);
       if (update_cover === "ok") {
         const newPost = await createPost(
@@ -106,7 +104,7 @@ function Cover({ cover, visitor, photos }) {
           user.token
         );
 
-        if (newPost === "ok") {
+        if (newPost.status === "ok") {
           setLoading(false);
           setCoverPicture("");
           coverRef.current.src = res[0].url;
@@ -116,7 +114,7 @@ function Cover({ cover, visitor, photos }) {
         }
       } else {
         setLoading(false);
-        setError(res);
+        setError(update_cover);
       }
     } catch (error) {
       setLoading(false);

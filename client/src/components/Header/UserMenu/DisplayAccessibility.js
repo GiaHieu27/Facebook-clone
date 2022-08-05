@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import Cookies from "js-cookie";
-import themeReducer from "../../../redux/reducers/themeReducer";
+import themeReducer from "../../../redux/slices/themeSlice";
 
 function DisplayAccessibility({ setVisible }) {
   const dispatch = useDispatch();

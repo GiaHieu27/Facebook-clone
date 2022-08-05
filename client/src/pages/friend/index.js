@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import Header from "../../components/Header";
-import friendsReducer from "../../redux/reducers/friendsReducer";
+import friendsReducer from "../../redux/slices/friendsSlice";
 import { getFriend } from "../../functions/friend";
 import Card from "./Card";
 import { Link, useParams } from "react-router-dom";

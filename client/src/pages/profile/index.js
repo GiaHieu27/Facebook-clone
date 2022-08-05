@@ -9,7 +9,7 @@ import ScaleLoader from "react-spinners/ScaleLoader";
 import axios from "axios";
 
 // project
-import profileReducer from "../../redux/reducers/profileReducer";
+import profileReducer from "../../redux/slices/profileSlice";
 import Header from "../../components/Header";
 import Cover from "./Cover";
 import ProfilePictureInfos from "./ProfilePictureInfos";
@@ -138,7 +138,12 @@ function Profile({ getPosts }) {
               </div>
               <div
                 className="profile_img_wrap"
-                style={{ marginBottom: "-3rem", transform: "translateY(-8px)" }}
+                style={{
+                  marginBottom: "-3rem",
+                  transform: "translateY(-8px)",
+                  position: "relative",
+                  zIndex: "1",
+                }}
               >
                 <div className="profile_w_left">
                   <Skeleton

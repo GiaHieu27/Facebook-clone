@@ -1,4 +1,5 @@
 const express = require("express");
+const router = express.Router();
 
 const { authUser } = require("../middlewares/auth");
 
@@ -17,8 +18,6 @@ const {
   updateDetails,
 } = require("../controllers/Profile");
 const { activeAccount, sendVerification } = require("../controllers/Activate");
-
-const router = express.Router();
 
 router.post("/register", register);
 router.post("/login", login);

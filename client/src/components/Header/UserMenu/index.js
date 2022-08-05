@@ -6,7 +6,7 @@ import Cookies from "js-cookie";
 import SettingsPrivacy from "./SettingsPrivacy";
 import DisplayAccessibility from "./DisplayAccessibility";
 import HelpSupport from "./HelpSupport";
-import userReducer from "../../../redux/reducers/userReducer";
+import userReducer from "../../../redux/slices/userSlice";
 
 function UserMenu({ user }) {
   const dispatch = useDispatch();

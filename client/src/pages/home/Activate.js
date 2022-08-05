@@ -10,7 +10,7 @@ import RightHome from "../../components/Home/Right";
 import Stories from "../../components/Home/Stories";
 import CreatePost from "../../components/CreatePost";
 import ActivateForm from "./ActivateForm";
-import userReducer from "../../redux/reducers/userReducer";
+import userReducer from "../../redux/slices/userSlice";
 
 function Activate() {
   const dispatch = useDispatch();

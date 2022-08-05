@@ -1,4 +1,5 @@
 const express = require("express");
+const router = express.Router();
 
 const { authUser } = require("../middlewares/auth");
 const {
@@ -8,8 +9,6 @@ const {
   savePost,
   deletePost,
 } = require("../controllers/Post");
-
-const router = express.Router();
 
 router.post("/createPost", authUser, createPost);
 router.get("/getAllPosts", authUser, getAllPosts);

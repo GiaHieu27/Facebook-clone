@@ -1,11 +1,11 @@
 const express = require("express");
+const router = express.Router();
 
 const { authUser } = require("../middlewares/auth");
 const { imageUpload } = require("../middlewares/imageUpload");
 
 const { uploadImages, listImages } = require("../controllers/Upload");
 
-const router = express.Router();
 
 router.post("/uploadImages", authUser, imageUpload, uploadImages);
 router.post("/listImages", authUser, listImages);

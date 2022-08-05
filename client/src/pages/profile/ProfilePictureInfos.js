@@ -1,9 +1,9 @@
-import { useContext } from "react";
-import { useRef, useState } from "react";
+import { useRef, useState, useContext } from "react";
+import { Link } from "react-router-dom";
+
 import ProfilePicture from "../../components/ProfilePicture";
 import Friendship from "./Friendship";
 import { ProfileContext } from "../../profileContext/Context";
-import { Link } from "react-router-dom";
 
 function ProfilePictureInfos({ profile, visitor, photos }) {
   const { othername } = useContext(ProfileContext);
