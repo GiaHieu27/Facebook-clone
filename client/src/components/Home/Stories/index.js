@@ -22,11 +22,11 @@ function Stories() {
   });
 
   const max = query885px
-    ? 5
-    : query960px
     ? 4
+    : query960px
+    ? 3
     : query1030px
-    ? 5
+    ? 4
     : query1175px
     ? 4
     : stories.length;

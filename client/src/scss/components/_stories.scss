@@ -1,9 +1,10 @@
 .stories {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(6, 105px);
+  grid-template-columns: repeat(5, 110px);
   gap: 10px;
   padding: 6px 0;
+  margin-bottom: 12px;
 }
 
 .create_story {
@@ -97,6 +98,7 @@
     width: 100px;
     color: #fff;
     font-size: 14px;
+    font-weight: 700;
     padding-left: 10px;
   }
 }
