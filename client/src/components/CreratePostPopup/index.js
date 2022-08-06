@@ -163,14 +163,20 @@ function CreratePostPopup({ user, setVisible, posts, dispatch, profile }) {
           />
         )}
         <AddYourPost setShowPrev={setShowPrev} />
+
         <button
           className="post_submit"
+          style={{
+            background: `${!text && !images.length ? "#e4e6eb" : "#1876f2"}`,
+            cursor: `${!text && !images.length ? "not-allowed" : "pointer"}`,
+            color: `${!text && !images.length ? "#bcc0c4" : "white"}`,
+          }}
           onClick={() => {
             handleSubmitPost();
           }}
           disabled={loading}
         >
-          {loading ? <PulseLoader color="white" size="7px" /> : "Post"}
+          {loading ? <PulseLoader color="#fff" size={5} /> : "Post"}
         </button>
       </div>
     </div>

@@ -178,7 +178,7 @@
 }
 
 .overflow_a {
-  max-height: 500px;
+  max-height: 250px;
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -212,6 +212,7 @@
     border: 1px solid var(--bg-third);
     border-radius: 10px;
     color: var(--color-primary);
+    // 
   }
 
   &_pics {
@@ -456,7 +457,7 @@
 
 .bgHandler {
   width: 100%;
-  height: 360px;
+  height: 320px;
   background-size: cover;
 
   textarea {

@@ -33,7 +33,7 @@ function ProfilePictureInfos({ profile, visitor, photos }) {
         <div className="profile_w_col">
           <div className="profile_name">
             {profile.first_name} {profile.last_name}
-            <div className="othername">{`(${othername})`}</div>
+            <div className="othername">{othername ? `(${othername})` : ""}</div>
           </div>
           {profile?.friends && (
             <div className="profile_friend_count">
