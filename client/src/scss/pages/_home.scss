@@ -91,22 +91,8 @@
     display: none;
   }
 
-  .left {
-    &_home {
-      width: 70px;
-      &::-webkit-scrollbar {
-        display: none;
-      }
-    }
-
-    &_link {
-      background: var(--bg-third);
-      width: 55px;
-      height: 55px;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-    }
+  .left_home {
+    display: none;
   }
 
   .home_middle {
@@ -130,7 +116,7 @@
   }
 
   .stories {
-    grid-template-columns: repeat(5, 110px);
+    grid-template-columns: repeat(5, 10.8vw);
   }
 }
 
@@ -147,7 +133,7 @@
     margin-left: 10%;
   }
   .right_home {
-    left: 78%;
+    left: 76%;
     width: 20vw;
   }
   .splitter1 {
@@ -162,6 +148,9 @@
 }
 
 @media (max-width: 885px) {
+  .left_home {
+    display: none;
+  }
   .right_home {
     display: none;
   }
@@ -172,17 +161,21 @@
   }
   .stories {
     width: 112%;
+    grid-template-columns: repeat(5, 14.8vw);
   }
   .home_middle {
-    margin-left: 9%;
+    margin-left: 14%;
   }
   .left_home::-webkit-scrollbar {
     display: none;
   }
 }
-@media (max-width: 805px) {
+
+@media (max-width: 799px) {
+  .home_middle {
+    margin-left: 10%;
+  }
   .stories {
-    // grid-template-columns: repeat(6, 12.7vw);
     grid-template-columns: repeat(5, 15.7vw);
   }
   .story_profile_name,
@@ -206,13 +199,6 @@
 }
 
 @media (max-width: 620px) {
-  .left_home {
-    display: none;
-  }
-  .home_middle {
-    position: absolute;
-    margin-left: 0;
-  }
   .stories,
   .createPost,
   .post,
@@ -221,9 +207,6 @@
   }
   .stories .white_circle {
     display: none;
-  }
-  .stories {
-    grid-template-columns: repeat(6, 14vw);
   }
   .story,
   .create_story_card {
@@ -238,29 +221,26 @@
   .createPost_icon svg {
     width: 20px;
   }
-}
 
-@media (max-width: 400px) {
-  .createPost,
-  .post {
-    margin-top: 1rem;
-  }
   .home_middle,
   .createPost,
   .post {
     width: 98%;
-    margin: 0 auto;
-    margin-top: 1rem;
+    margin-top: 9px;
   }
 
+  .createPost,
+  .post {
+    width: 102%;
+    margin-top: 1rem;
+  }
   .send_verification {
-    width: 98%;
+    width: 102%;
     margin: 0 auto;
   }
 
   .stories {
-    grid-template-columns: repeat(6, 16.6vw);
-    padding-left: 5px;
+    grid-template-columns: repeat(5, 17vw);
   }
 
   .home_middle {
