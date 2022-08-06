@@ -161,9 +161,10 @@
   }
 
   &_updated_picture {
+    $demen: 350px;
     z-index: 1;
-    width: 380px;
-    height: 380px;
+    width: $demen;
+    height: $demen;
     border-radius: 50%;
     object-fit: cover;
     border: 3px solid var(--bg-primary);

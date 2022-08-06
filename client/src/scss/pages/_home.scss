@@ -122,6 +122,7 @@
 
 @media (max-width: 960px) {
   .createPost,
+  .meeting,
   .post,
   .send_verification {
     width: 93%;
@@ -155,6 +156,7 @@
     display: none;
   }
   .createPost,
+  .meeting,
   .post,
   .send_verification {
     width: 110%;
@@ -230,6 +232,7 @@
   }
 
   .createPost,
+  .meeting,
   .post {
     width: 102%;
     margin-top: 1rem;
