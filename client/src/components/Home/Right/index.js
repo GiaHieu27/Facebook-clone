@@ -1,8 +1,9 @@
 import { NewRoom, Search, Dots } from "../../../svg";
 import Contact from "./Contact";
 
-function RightHome({ user }) {
+function RightHome() {
   const color = "#65676b";
+
   return (
     <div className="right_home">
       <div className="heading">Sponsored</div>
@@ -23,7 +24,7 @@ function RightHome({ user }) {
           </div>
         </div>
         <div className="contacts_list">
-          <Contact user={user} />
+          <Contact />
         </div>
       </div>
     </div>

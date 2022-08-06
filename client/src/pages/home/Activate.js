@@ -10,7 +10,7 @@ import RightHome from "../../components/Home/Right";
 import Stories from "../../components/Home/Stories";
 import CreatePost from "../../components/CreatePost";
 import ActivateForm from "./ActivateForm";
-import userReducer from "../../redux/slices/userSlice";
+import userSlice from "../../redux/slices/userSlice";
 
 function Activate() {
   const dispatch = useDispatch();
@@ -45,7 +45,7 @@ function Activate() {
       setSuccess(data.message);
 
       Cookies.set("user", JSON.stringify({ ...user, verified: true }));
-      dispatch(userReducer.actions.VERIFY(true));
+      dispatch(userSlice.actions.VERIFY(true));
       setTimeout(() => {
         navigate("/");
       }, 3000);

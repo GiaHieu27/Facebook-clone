@@ -11,7 +11,7 @@ import * as Yub from "yup";
 
 // import project
 import LoginInput from "../../components/Inputs/LoginInput";
-import userReducer from "../../redux/slices/userSlice";
+import userSlice from "../../redux/slices/userSlice";
 
 const loginInfo = {
   email: "",
@@ -44,7 +44,7 @@ function LoginForm({ setVisible }) {
       setError("");
 
       setTimeout(() => {
-        dispatch(userReducer.actions.LOGIN(data));
+        dispatch(userSlice.actions.LOGIN(data));
         Cookies.set("user", JSON.stringify(data));
         navigate("/");
       }, 2000);

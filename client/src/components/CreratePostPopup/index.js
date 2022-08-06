@@ -9,7 +9,7 @@ import useClickOutSide from "../../hooks/useClickOutSide";
 import PostError from "./PostError";
 import dataURLtoBlob from "../../helpers/dataURLtoBlob";
 import uploadImages from "../../functions/uploadImages";
-import profileReducer from "../../redux/slices/profileSlice";
+import profileSlice from "../../redux/slices/profileSlice";
 import { createPost } from "../../functions/post";
 
 function CreratePostPopup({ user, setVisible, posts, dispatch, profile }) {
@@ -42,7 +42,7 @@ function CreratePostPopup({ user, setVisible, posts, dispatch, profile }) {
 
       if (res.status === "ok") {
         if (profile) {
-          dispatchh(profileReducer.actions.PROFILE_POSTS([res.data, ...posts]));
+          dispatchh(profileSlice.actions.PROFILE_POSTS([res.data, ...posts]));
         } else {
           dispatch({
             type: "POST_SUCCESS",
@@ -82,7 +82,7 @@ function CreratePostPopup({ user, setVisible, posts, dispatch, profile }) {
       setLoading(false);
       if (res.status === "ok") {
         if (profile) {
-          dispatchh(profileReducer.actions.PROFILE_POSTS([res.data, ...posts]));
+          dispatchh(profileSlice.actions.PROFILE_POSTS([res.data, ...posts]));
         } else {
           dispatch({
             type: "POST_SUCCESS",
@@ -102,7 +102,7 @@ function CreratePostPopup({ user, setVisible, posts, dispatch, profile }) {
 
       if (res.status === "ok") {
         if (profile) {
-          dispatchh(profileReducer.actions.PROFILE_POSTS([res.data, ...posts]));
+          dispatchh(profileSlice.actions.PROFILE_POSTS([res.data, ...posts]));
         } else {
           dispatch({
             type: "POST_SUCCESS",

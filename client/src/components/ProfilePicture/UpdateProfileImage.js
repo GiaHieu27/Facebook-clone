@@ -6,7 +6,7 @@ import PulseLoader from "react-spinners/PulseLoader";
 
 import getCroppedImg from "../../helpers/getCroppedImg";
 import uploadImages from "../../functions/uploadImages";
-import userReducer from "../../redux/slices/userSlice";
+import userSlice from "../../redux/slices/userSlice";
 import { updateProfilePicture } from "../../functions/profile";
 import { createPost } from "../../functions/post";
 
@@ -88,7 +88,7 @@ function UpdateProfileImage({ image, setImage, setError, setShow, pRef }) {
               picture: res[0].url,
             })
           );
-          dispatch(userReducer.actions.UPDATEPICTURE(res[0].url));
+          dispatch(userSlice.actions.UPDATEPICTURE(res[0].url));
           setShow(false);
         } else {
           setLoading(false);

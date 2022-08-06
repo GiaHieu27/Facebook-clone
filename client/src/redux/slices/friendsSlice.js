@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const friendSlice = createSlice({
   name: "friends",
-  initialState: { loading: false, friends: {}, error: "" },
+  initialState: { loading: false, data: {}, error: "" },
   reducers: {
     FRIEND_REQUEST: (state, action) => {
       state.loading = true;
@@ -10,7 +10,7 @@ const friendSlice = createSlice({
     FRIEND_SUCCESS: (state, action) => {
       if (action.payload) {
         state.loading = false;
-        state.friends = action.payload;
+        state.data = action.payload;
       }
     },
     FRIEND_ERROR: (state, action) => {

@@ -2,14 +2,14 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import Header from "../../components/Header";
-import friendsReducer from "../../redux/slices/friendsSlice";
+import friendsSlice from "../../redux/slices/friendsSlice";
 import { getFriend } from "../../functions/friend";
 import Card from "./Card";
 import { Link, useParams } from "react-router-dom";
 
 function Friend() {
-  const user = useSelector((state) => state.user);
-  const friends = useSelector((state) => state.friends);
+  const { user, friends } = useSelector((state) => ({ ...state }));
+
   const dispatch = useDispatch();
   const { type } = useParams();
 
@@ -18,11 +18,11 @@ function Friend() {
   }, []);
 
   const getFriendPages = async () => {
-    dispatch(friendsReducer.actions.FRIEND_REQUEST());
+    dispatch(friendsSlice.actions.FRIEND_REQUEST());
     const res = await getFriend(user.token);
     if (res.success === true)
-      dispatch(friendsReducer.actions.FRIEND_SUCCESS(res.data));
-    else dispatch(friendsReducer.actions.FRIEND_ERROR(res.data));
+      dispatch(friendsSlice.actions.FRIEND_SUCCESS(res.data));
+    else dispatch(friendsSlice.actions.FRIEND_ERROR(res.data));
   };
 
   return (
@@ -139,8 +139,8 @@ function Friend() {
                 )}
               </div>
               <div className="flex_wrap">
-                {friends.friends.requests &&
-                  friends.friends.requests.map((userr) => (
+                {friends.data.requests &&
+                  friends.data.requests.map((userr) => (
                     <Card
                       key={userr._id}
                       userr={userr}
@@ -164,8 +164,8 @@ function Friend() {
                 )}
               </div>
               <div className="flex_wrap">
-                {friends.friends.sentRequests &&
-                  friends.friends.sentRequests.map((userr) => (
+                {friends.data.sentRequests &&
+                  friends.data.sentRequests.map((userr) => (
                     <Card
                       key={userr._id}
                       userr={userr}
@@ -189,8 +189,8 @@ function Friend() {
                 )}
               </div>
               <div className="flex_wrap">
-                {friends.friends.friends &&
-                  friends.friends.friends.map((userr) => (
+                {friends.data.friends &&
+                  friends.data.friends.map((userr) => (
                     <Card
                       key={userr._id}
                       userr={userr}

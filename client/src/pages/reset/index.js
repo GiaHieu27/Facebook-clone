@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Cookies from "js-cookie";
 
-import userReducer from "../../redux/slices/userSlice";
+import userSlice from "../../redux/slices/userSlice";
 import SearchAccount from "./SearchAccount";
 import SendMail from "./SendMail";
 import CodeVerification from "./CodeVerification";
@@ -26,7 +26,7 @@ function ResetPassword() {
 
   const logOut = () => {
     Cookies.set("user", "");
-    dispatch(userReducer.actions.LOGOUT());
+    dispatch(userSlice.actions.LOGOUT());
     setTimeout(() => {
       navigate("/login");
     }, 2000);

@@ -9,7 +9,7 @@ import ScaleLoader from "react-spinners/ScaleLoader";
 import axios from "axios";
 
 // project
-import profileReducer from "../../redux/slices/profileSlice";
+import profileSlice from "../../redux/slices/profileSlice";
 import Header from "../../components/Header";
 import Cover from "./Cover";
 import ProfilePictureInfos from "./ProfilePictureInfos";
@@ -46,7 +46,7 @@ function Profile({ getPosts }) {
 
   const getProfile = async () => {
     try {
-      dispatch(profileReducer.actions.PROFILE_REQUEST());
+      dispatch(profileSlice.actions.PROFILE_REQUEST());
       const { data } = await axios.get(
         `${process.env.REACT_APP_BACKEND_URL}/getProfile/${userParam}`,
         {
@@ -73,11 +73,11 @@ function Profile({ getPosts }) {
         } catch (error) {
           console.log(error);
         }
-        dispatch(profileReducer.actions.PROFILE_SUCCESS(data));
+        dispatch(profileSlice.actions.PROFILE_SUCCESS(data));
       }
     } catch (error) {
       dispatch(
-        profileReducer.actions.PROFILE_SUCCESS(error.response.data.message)
+        profileSlice.actions.PROFILE_SUCCESS(error.response.data.message)
       );
     }
   };

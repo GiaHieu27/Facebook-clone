@@ -9,9 +9,10 @@ import Stories from "../../components/Home/Stories";
 import CreatePost from "../../components/CreatePost";
 import SenVerification from "../../components/Home/sendVerification";
 import Post from "../../components/Post";
+import Meeting from "../../components/Meeting";
 
 function Home({ setVisible, posts, loading, getPosts }) {
-  const { user } = useSelector((user) => ({ ...user }));
+  const user = useSelector((state) => state.user);
   const [height, setHeight] = useState();
   const middle = useRef(null);
 
@@ -27,6 +28,7 @@ function Home({ setVisible, posts, loading, getPosts }) {
         <Stories />
         {!user.verified && <SenVerification user={user} />}
         <CreatePost user={user} setVisible={setVisible} />
+        <Meeting />
         {loading ? (
           <div className="sekeleton_loader">
             <ScaleLoader color="#1876f2" />
@@ -39,7 +41,7 @@ function Home({ setVisible, posts, loading, getPosts }) {
           </div>
         )}
       </div>
-      <RightHome user={user} />
+      <RightHome />
     </div>
   );
 }

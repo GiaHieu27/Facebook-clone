@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 import RegisterInput from "../Inputs/RegisterInput";
 import DateOfBirthSelect from "../Inputs/SelectInput/DateOfBirthSelect";
 import GenderSelect from "../Inputs/RadioInput/GenderRadio";
-import userReducer from "../../redux/slices/userSlice";
+import userSlice from "../../redux/slices/userSlice";
 
 function RegisterForm({ setVisible }) {
   const dispatch = useDispatch();
@@ -70,7 +70,7 @@ function RegisterForm({ setVisible }) {
 
       const { message, ...rest } = data;
       setTimeout(() => {
-        dispatch(userReducer.actions.LOGIN(rest));
+        dispatch(userSlice.actions.LOGIN(rest));
         Cookies.set("user", JSON.stringify(rest));
         navigate("/");
       }, 2000);

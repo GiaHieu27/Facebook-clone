@@ -1,10 +1,12 @@
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Cookies from "js-cookie";
-import themeReducer from "../../../redux/slices/themeSlice";
+import themeSlice from "../../../redux/slices/themeSlice";
 
 function DisplayAccessibility({ setVisible }) {
-  const dispatch = useDispatch();
   const darkTheme = useSelector((sate) => sate.theme);
+  const dispatch = useDispatch();
+  const [state, setState] = useState(darkTheme);
 
   return (
     <div className="absolute_wrap">
@@ -32,35 +34,33 @@ function DisplayAccessibility({ setVisible }) {
         </div>
       </div>
 
-      <label
-        htmlFor="darkOff"
-        className="hover1"
-        onClick={() => {
-          dispatch(themeReducer.actions.LIGHT());
-          Cookies.set("darkTheme", false);
-        }}
-      >
+      <label htmlFor="darkOff" className="hover1">
         <span>Off</span>
-        {!darkTheme ? (
-          <input type="radio" name="dark" id="darkOff" checked />
-        ) : (
-          <input type="radio" name="dark" id="darkOff" />
-        )}
+        <input
+          type="radio"
+          name="dark"
+          id="darkOff"
+          checked={!state ? true : false}
+          onChange={() => {
+            dispatch(themeSlice.actions.LIGHT());
+            Cookies.set("darkTheme", false);
+            setState(false);
+          }}
+        />
       </label>
-      <label
-        htmlFor="darkOn"
-        className="hover1"
-        onClick={() => {
-          dispatch(themeReducer.actions.DARK());
-          Cookies.set("darkTheme", true);
-        }}
-      >
+      <label htmlFor="darkOn" className="hover1">
         <span>On</span>
-        {darkTheme ? (
-          <input type="radio" name="dark" id="darkOn" checked />
-        ) : (
-          <input type="radio" name="dark" id="darkOn" />
-        )}
+        <input
+          type="radio"
+          name="dark"
+          id="darkOn"
+          checked={state ? state : false}
+          onChange={() => {
+            dispatch(themeSlice.actions.DARK());
+            Cookies.set("darkTheme", true);
+            setState(true);
+          }}
+        />
       </label>
       <div className="mmenu_main">
         <div className="small_circle" style={{ width: "50px" }}>
