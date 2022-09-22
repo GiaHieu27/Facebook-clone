@@ -1,14 +1,14 @@
-const User = require("../models/User");
-const Post = require("../models/Post");
+const User = require('../models/User');
+const Post = require('../models/Post');
 
 exports.getProfile = async (req, res) => {
   try {
     const { username } = req.params;
     const user = await User.findById(req.user.id);
-    const profile = await User.findOne({ username }).select("-password");
+    const profile = await User.findOne({ username }).select('-password');
     const posts = await Post.find({ user: profile._id })
-      .populate("user", "-password")
-      .populate("comments.commentBy", "first_name last_name picture username")
+      .populate('user', '-password')
+      .populate('comments.commentBy', 'first_name last_name picture username')
       .sort({ createdAt: -1 });
 
     const friendship = {
@@ -37,10 +37,10 @@ exports.getProfile = async (req, res) => {
       friendship.requestReceived = true;
     }
 
-    await profile.populate("friends", "first_name last_name username picture");
+    await profile.populate('friends', 'first_name last_name username picture');
     res.json({ ...profile.toObject(), posts, friendship });
   } catch (error) {
-    res.status(500).json({ message: e.message });
+    res.status(500).json({ message: error.message });
   }
 };
 
@@ -52,7 +52,7 @@ exports.updateProfilePicture = async (req, res) => {
     });
     res.json(url);
   } catch (error) {
-    res.status(500).json({ message: e.message });
+    res.status(500).json({ message: error.message });
   }
 };
 
@@ -64,7 +64,7 @@ exports.updateCover = async (req, res) => {
     });
     res.json(url);
   } catch (error) {
-    res.status(500).json({ message: e.message });
+    res.status(500).json({ message: error.message });
   }
 };
 
@@ -82,6 +82,6 @@ exports.updateDetails = async (req, res) => {
     );
     res.json(updated.details);
   } catch (error) {
-    res.status(500).json({ message: e.message });
+    res.status(500).json({ message: error.message });
   }
 };

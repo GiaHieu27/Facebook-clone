@@ -1,28 +1,27 @@
 // lib
-import { useContext, useEffect, useRef, useState } from "react";
-import { useParams, useNavigate, Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { useMediaQuery } from "react-responsive";
-import Skeleton from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
-import ScaleLoader from "react-spinners/ScaleLoader";
-import axios from "axios";
+import { useContext, useEffect, useState } from 'react';
+import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
+import ScaleLoader from 'react-spinners/ScaleLoader';
+import axios from 'axios';
 
 // project
-import profileSlice from "../../redux/slices/profileSlice";
-import Header from "../../components/Header";
-import Cover from "./Cover";
-import ProfilePictureInfos from "./ProfilePictureInfos";
-import ProfileMenu from "./ProfileMenu";
-import PpYouMayKnow from "./PpYouMayKnow";
-import CreatePost from "../../components/CreatePost";
-import GridPost from "./GridPost";
-import Post from "../../components/Post";
-import Photos from "./Photos";
-import Friends from "./Friends";
-import Intro from "../../components/Intro";
-import CreratePostPopup from "../../components/CreratePostPopup";
-import { ProfileContext } from "../../profileContext/Context";
+import profileSlice from '../../redux/slices/profileSlice';
+import Header from '../../components/Header';
+import Cover from './Cover';
+import ProfilePictureInfos from './ProfilePictureInfos';
+import ProfileMenu from './ProfileMenu';
+import PpYouMayKnow from './PpYouMayKnow';
+import CreatePost from '../../components/CreatePost';
+import GridPost from './GridPost';
+import Post from '../../components/Post';
+import Photos from './Photos';
+import Friends from './Friends';
+import Intro from '../../components/Intro';
+import CreratePostPopup from '../../components/CreratePostPopup';
+import { ProfileContext } from '../../profileContext/Context';
 
 function Profile({ getPosts }) {
   const navigate = useNavigate();
@@ -38,78 +37,48 @@ function Profile({ getPosts }) {
 
   const path = `${userParam}/*`;
   const max = 30;
-  const sort = "desc";
+  const sort = 'desc';
 
   useEffect(() => {
+    const getProfile = async () => {
+      try {
+        dispatch(profileSlice.actions.PROFILE_REQUEST());
+        const { data } = await axios.get(
+          `${process.env.REACT_APP_BACKEND_URL}/getProfile/${userParam}`,
+          {
+            headers: {
+              Authorization: 'Bearer ' + user.token,
+            },
+          }
+        );
+
+        if (data.ok === false) {
+          navigate('/profile');
+        } else {
+          try {
+            const images = await axios.post(
+              `${process.env.REACT_APP_BACKEND_URL}/listImages/`,
+              { path, max, sort },
+              {
+                headers: {
+                  Authorization: 'Bearer ' + user.token,
+                },
+              }
+            );
+            setPhotos(images.data);
+          } catch (error) {
+            console.log(error);
+          }
+          dispatch(profileSlice.actions.PROFILE_SUCCESS(data));
+        }
+      } catch (error) {
+        dispatch(
+          profileSlice.actions.PROFILE_SUCCESS(error.response.data.message)
+        );
+      }
+    };
     getProfile();
   }, [userParam]);
-
-  const getProfile = async () => {
-    try {
-      dispatch(profileSlice.actions.PROFILE_REQUEST());
-      const { data } = await axios.get(
-        `${process.env.REACT_APP_BACKEND_URL}/getProfile/${userParam}`,
-        {
-          headers: {
-            Authorization: "Bearer " + user.token,
-          },
-        }
-      );
-
-      if (data.ok === false) {
-        navigate("/profile");
-      } else {
-        try {
-          const images = await axios.post(
-            `${process.env.REACT_APP_BACKEND_URL}/listImages/`,
-            { path, max, sort },
-            {
-              headers: {
-                Authorization: "Bearer " + user.token,
-              },
-            }
-          );
-          setPhotos(images.data);
-        } catch (error) {
-          console.log(error);
-        }
-        dispatch(profileSlice.actions.PROFILE_SUCCESS(data));
-      }
-    } catch (error) {
-      dispatch(
-        profileSlice.actions.PROFILE_SUCCESS(error.response.data.message)
-      );
-    }
-  };
-
-  // Scroll fixed
-  const profileTopRef = useRef(null);
-  const [topHeight, setTopHeight] = useState();
-
-  const leftSideRef = useRef(null);
-  const [leftHeight, setLeftHeight] = useState();
-  const [scrollHeight, setScrollHeight] = useState();
-
-  const check = useMediaQuery({
-    query: "(min-width: 901px)",
-  });
-  const friend = useMediaQuery({
-    query: "(max-width: 770px)",
-  });
-
-  useEffect(() => {
-    setTopHeight(profileTopRef.current.clientHeight + 300);
-    setLeftHeight(leftSideRef.current.clientHeight);
-    window.addEventListener("scroll", getScrollHeight, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", getScrollHeight, { passive: true });
-    };
-  }, [loading, scrollHeight]);
-
-  const getScrollHeight = () => {
-    setScrollHeight(window.pageYOffset);
-  };
-  // End scroll fixed
 
   return (
     <div className="profile">
@@ -125,7 +94,7 @@ function Profile({ getPosts }) {
         />
       )}
 
-      <div className="profile_top" ref={profileTopRef}>
+      <div className="profile_top">
         <div className="profile_container">
           {loading ? (
             <>
@@ -133,16 +102,16 @@ function Profile({ getPosts }) {
                 <Skeleton
                   height="347px"
                   containerClassName="avatar-skeleton"
-                  style={{ borderRadius: "8px" }}
+                  style={{ borderRadius: '8px' }}
                 />
               </div>
               <div
                 className="profile_img_wrap"
                 style={{
-                  marginBottom: "-3rem",
-                  transform: "translateY(-8px)",
-                  position: "relative",
-                  zIndex: "1",
+                  marginBottom: '-3rem',
+                  transform: 'translateY(-8px)',
+                  position: 'relative',
+                  zIndex: '1',
                 }}
               >
                 <div className="profile_w_left">
@@ -151,7 +120,7 @@ function Profile({ getPosts }) {
                     width="180px"
                     circle
                     containerClassName="avatar-skeleton"
-                    style={{ transform: "translateY(-3.3rem)" }}
+                    style={{ transform: 'translateY(-3.3rem)' }}
                   />
                   <div className="profile_w_col">
                     <div className="profile_name">
@@ -159,13 +128,13 @@ function Profile({ getPosts }) {
                         height="33px"
                         width="200px"
                         containerClassName="avatar-skeleton"
-                        style={{ transform: "translateY(10px)" }}
+                        style={{ transform: 'translateY(10px)' }}
                       />
                       <Skeleton
                         height="26px"
                         width="100px"
                         containerClassName="avatar-skeleton"
-                        style={{ transform: "translateY(14px)" }}
+                        style={{ transform: 'translateY(14px)' }}
                       />
                     </div>
                     <div className="profile_friend_count">
@@ -173,13 +142,10 @@ function Profile({ getPosts }) {
                         height="15px"
                         width="90px"
                         containerClassName="avatar-skeleton"
-                        style={{ transform: "translateY(12px)" }}
+                        style={{ transform: 'translateY(12px)' }}
                       />
                     </div>
-                    <div
-                      className="profile_friend_imgs"
-                      style={{ marginLeft: `${!friend ? 0 : 35}px` }}
-                    >
+                    <div className="profile_friend_imgs">
                       {Array.from(new Array(6), (val, index) => index + 1).map(
                         (val, i) => (
                           <Skeleton
@@ -199,7 +165,7 @@ function Profile({ getPosts }) {
                     </div>
                   </div>
                 </div>
-                <div className={`friendship ${!visitor && "fix"}`}>
+                <div className={`friendship ${!visitor && 'fix'}`}>
                   <Skeleton
                     height="36px"
                     width="120px"
@@ -244,17 +210,8 @@ function Profile({ getPosts }) {
         <div className="profile_container">
           <div className="bottom_container">
             <PpYouMayKnow />
-            <div
-              className={`profile_grid ${
-                check && scrollHeight >= topHeight && leftHeight >= 1000
-                  ? "scrollFixed showLess"
-                  : check &&
-                    scrollHeight >= topHeight &&
-                    leftHeight < 1000 &&
-                    "scrollFixed showMore"
-              }`}
-            >
-              <div className="profile_left" ref={leftSideRef}>
+            <div className={`profile_grid `}>
+              <div className="profile_left">
                 {loading ? (
                   <>
                     <div className="profile_card">
@@ -308,7 +265,7 @@ function Profile({ getPosts }) {
                   <Link to="/">Advertising </Link>
                   <span>. </span>
                   <Link to="/">
-                    Ad Choices <i className="ad_choices_icon"></i>{" "}
+                    Ad Choices <i className="ad_choices_icon"></i>{' '}
                   </Link>
                   <span>. </span>
                   <Link to="/"></Link>Cookies <span>. </span>

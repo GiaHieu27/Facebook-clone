@@ -1,15 +1,15 @@
-import { useEffect, useRef, useState } from "react";
-import { useSelector } from "react-redux";
-import ScaleLoader from "react-spinners/ScaleLoader";
+import { useEffect, useRef, useState } from 'react';
+import { useSelector } from 'react-redux';
+import ScaleLoader from 'react-spinners/ScaleLoader';
 
-import Header from "../../components/Header";
-import LeftHome from "../../components/Home/Left";
-import RightHome from "../../components/Home/Right";
-import Stories from "../../components/Home/Stories";
-import CreatePost from "../../components/CreatePost";
-import SenVerification from "../../components/Home/sendVerification";
-import Post from "../../components/Post";
-import Meeting from "../../components/Meeting";
+import Header from '../../components/Header';
+import LeftHome from '../../components/Home/Left';
+import RightHome from '../../components/Home/Right';
+import Stories from '../../components/Home/Stories';
+import CreatePost from '../../components/CreatePost';
+import SenVerification from '../../components/Home/sendVerification';
+import Post from '../../components/Post';
+import Meeting from '../../components/Meeting';
 
 function Home({ setVisible, posts, loading, getPosts }) {
   const user = useSelector((state) => state.user);
@@ -18,7 +18,7 @@ function Home({ setVisible, posts, loading, getPosts }) {
 
   useEffect(() => {
     setHeight(middle.current.clientHeight);
-  }, []);
+  }, [loading, height]);
 
   return (
     <div className="home" style={{ height: `${height + 150}px` }}>
