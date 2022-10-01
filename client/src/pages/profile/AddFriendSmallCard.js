@@ -15,7 +15,7 @@ function AddFriendSmallCard({ item }) {
               alt=""
               className="filter_blus"
             />
-            Kết bạn
+            Add friend
           </div>
         </div>
       </div>

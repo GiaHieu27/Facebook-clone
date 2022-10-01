@@ -1,12 +1,12 @@
-import { Dots } from "../../svg";
-import { stories } from "../../data/home";
-import AddFriendSmallCard from "./AddFriendSmallCard";
+import { Dots } from '../../svg';
+import { stories } from '../../data/home';
+import AddFriendSmallCard from './AddFriendSmallCard';
 
 function PpYouMayKnow() {
   return (
     <div className="pplumayknow">
       <div className="pplumayknow_header">
-        Có thể bạn biết những người này
+        People you may know
         <div className="post_header_right ppl_circle hover1">
           <Dots />
         </div>
